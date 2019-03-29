@@ -4,13 +4,13 @@ import datetime
 class Programare():
     def __init__(self, id_programare, id_parcare, nr_inmatriculare, data_programare, ora_sosire, ora_plecare,
                  tip_incarcare):
-        self.id_programare: int = id_programare
-        self.id_parcare: str = id_parcare
-        self.nr_inmatriculare: str = nr_inmatriculare
-        self.data_programare: datetime = data_programare
-        self.ora_sosire: datetime.time() = ora_sosire
-        self.ora_plecare: datetime.time() = ora_plecare
-        self.tip_incarcare: str = tip_incarcare
+        self.id_programare= id_programare
+        self.id_parcare=id_parcare
+        self.nr_inmatriculare = nr_inmatriculare
+        self.data_programare= data_programare
+        self.ora_sosire = ora_sosire
+        self.ora_plecare = ora_plecare
+        self.tip_incarcare = tip_incarcare
 
     def set_id_programare(self, idProgramare):
         self.id_programare = idProgramare
@@ -38,6 +38,9 @@ class Programare():
 
     def get_id_parcare(self):
         return self.id_parcare
+
+    def get_data_programare(self):
+        return self.data_programare
 
     def get_nr_inmatriculare(self):
         return self.nr_inmatriculare
