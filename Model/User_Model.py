@@ -1,5 +1,5 @@
 from Model.Basic_Model import Basic_Model
-from User import *
+from Model.User import *
 class User_Model(Basic_Model):
     #constructor User_Model ce mosteneste clasa Basic_Model unde facem conexiunea la baza de date
     def __init__(self):
@@ -25,3 +25,4 @@ class User_Model(Basic_Model):
         val=(id_user,username,nume,nr_telefon,tip,password)             #vectorul de valori ce vor fi parametri pentru
         self.cursor.execute(sql_insert,val)                             #valorile de mai sus (fiecare %s e de fapt un
         self.db.commit()                                                #obiect din val)
+        print("am insertat")
