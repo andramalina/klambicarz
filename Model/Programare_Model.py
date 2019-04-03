@@ -1,5 +1,5 @@
 from Model.Basic_Model import Basic_Model
-from Programare import *
+from Model.Programare import *
 
 
 class Programare_Model(Basic_Model):
@@ -18,7 +18,7 @@ class Programare_Model(Basic_Model):
             print(row)
 
     def insertProgramare(self, programare):
-        id_programare = programare.get_id_parcare()
+        id_programare = programare.get_id_programare()
         id_parcare = programare.get_id_parcare()
         nr_inmatriculare = programare.get_nr_inmatriculare()
         data_programare = programare.get_data_programare()

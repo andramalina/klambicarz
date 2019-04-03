@@ -1,5 +1,5 @@
 from Model.Basic_Model import Basic_Model
-from Parcare import *
+from Model.Parcare import *
 class Parcare_Model(Basic_Model):
 
     def __init__(self):
