@@ -6,7 +6,8 @@
 #    May 02, 2019 11:46:24 PM EEST  platform: Windows NT
 
 import sys
-
+from tkinter import messagebox
+from tkinter import *
 try:
     import Tkinter as tk
 except ImportError:
@@ -37,16 +38,34 @@ def backToUserMainPage(p1, canvas1, canvas2):
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
-def changePakingStatus(p1, canvas1, canvas2):
+def changePakingStatus(p1, canvas1, canvas2, entryId, entryNewStatus,ctrl_Parcari,ctrl_Programari):
     print('klambi_support.changePakingStatus')
     print('p1 = {0}'.format(p1))
+    val=0
+    if(entryNewStatus.get()=="inchis"):
+        val=0
+    elif(entryNewStatus.get()=="deschis"):
+        val=1
+    else:
+        messagebox.showinfo("Error","Va rugam introduceti inchis/deschis pentru status!")
+
+
+    if(ctrl_Parcari.findParcare(entryId.get())==False):
+        messagebox.showinfo("Error","Id inexistent!")
+    elif(val==1 or val==0):
+        ctrl_Parcari.updateStatus(val,entryId.get())
+        if(val==0):
+            ctrl_Programari.deleteProgramariByParcareAndAfterSysdate(entryId.get())
+
     tk.Misc.lift(canvas1)
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
-def checkAvailability(p1, canvas):
+def checkAvailability(p1, canvas, list, totalLotsLabel,availableLotsLabel,bookedLotsLabel, ctrl_Parcari):
     print('klambi_support.checkAvailability')
     print('p1 = {0}'.format(p1))
+    set_list_ParcariCapacitiesOccupied(list,ctrl_Parcari)
+    set_labels_TotalAvailableBooked(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_Parcari)
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
@@ -56,17 +75,43 @@ def checkParkings(p1, canvas):
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def confirmNewReservation(p1, canvas1, canvas2):
+def confirmNewReservation(p1, canvas1, canvas2, yearInputUser ,monthInputUser, dayInputUser, hourInputUser, parkingIDReservationInput, carRegNoInput, fastChargingCheckboxState, ctrl_Programari):
     print('klambi_support.confirmNewReservation')
     print('p1 = {0}'.format(p1))
+    year=yearInputUser.get()
+    month=monthInputUser.get()
+    day=dayInputUser.get()
+    hour=hourInputUser.get()
+    parkingId=parkingIDReservationInput.get()
+    carNo=carRegNoInput.get()
+    fastStyle=fastChargingCheckboxState.get()
+    print("iuhuu")
+    print(fastStyle)
+    if(len(year)!=0 and len(month)!=0 and len(day)!=0):
+        ctrl_Programari.addProgramareWithDay(parkingId,carNo,year,month,day,hour,fastStyle)
+    else:
+        ctrl_Programari.addProgramareToday(parkingId,hour,carNo,fastStyle)
     tk.Misc.lift(canvas1)
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
-def login(p1, canvas):
+def login(p1, canvas1, canvas2, entryUsername, entryPassword, ctrl_Users, roleLabelAdmin, roleLabelUser, usernameLabelAdmin,usernameLabelUser):
     print('klambi_support.login')
     print('p1 = {0}'.format(p1))
-    tk.Misc.lift(canvas)
+    print(entryUsername.get())
+    print(entryPassword.get())
+    tip = ctrl_Users.verify_user(entryUsername.get(), entryPassword.get())
+    if tip == "client":
+        roleLabelUser.configure(text='client')
+        usernameLabelUser.configure(text=entryUsername.get())
+        tk.Misc.lift(canvas1)
+    elif tip == "admin":
+        roleLabelAdmin.configure(text='admin')
+        usernameLabelAdmin.configure(text=entryUsername.get())
+        tk.Misc.lift(canvas2)
+    else:
+        messagebox.showinfo("Error", "Wrong credentials!")
+
     sys.stdout.flush()
 
 def logout(p1, canvas1, canvas2):
@@ -76,10 +121,11 @@ def logout(p1, canvas1, canvas2):
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
-def manageParking(p1, canvas):
+def manageParking(p1, canvas, parkingsList, ctrl_Parcari):
     print('klambi_support.manageParking')
     print('p1 = {0}'.format(p1))
     tk.Misc.lift(canvas)
+    set_list_ParcariUpdateList(parkingsList,ctrl_Parcari)
     sys.stdout.flush()
 
 def newReservation(p1, canvas):
@@ -88,30 +134,47 @@ def newReservation(p1, canvas):
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def profitByDay(p1):
+def profitByDay(p1,profitDetailsList, ctrl_Programari,label):
     print('klambi_support.profitByDay')
     print('p1 = {0}'.format(p1))
+    set_list_ProfitListByDay(profitDetailsList,ctrl_Programari)
+    label.configure(text='day')
     sys.stdout.flush()
 
-def profitByMonth(p1):
+def profitByMonth(p1,profitDetailsList, ctrl_Programari,label):
     print('klambi_support.profitByMonth')
     print('p1 = {0}'.format(p1))
+    set_list_ProfitListByMonth(profitDetailsList,ctrl_Programari)
+    label.configure(text='month')
     sys.stdout.flush()
 
-def profitByWeek(p1):
+def profitByWeek(p1,profitDetailsList, ctrl_Programari,label):
     print('klambi_support.profitByWeek')
     print('p1 = {0}'.format(p1))
+    set_list_ProfitListByWeek(profitDetailsList,ctrl_Programari)
+    label.configure(text='week')
     sys.stdout.flush()
 
-def selectAdminDate(p1, canvas):
+def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, hourInputAdmin, ctrl_Parcari, ctrl_Programari, totalLots,availableLots,emptyLots, parkingDetailsList):
     print('klambi_support.selectAdminDate')
     print('p1 = {0}'.format(p1))
+
+
+    if(len(yearInputAdmin.get())!=0 and len(monthInputAdmin.get())!=0 and len(dayInputAdmin.get())!=0):
+        set_labels_TotalAvailableBookedForSpecificDate(totalLots, availableLots, emptyLots, ctrl_Parcari,
+                                                       yearInputAdmin.get(), monthInputAdmin.get(), dayInputAdmin.get(),
+                                                       hourInputAdmin.get())
+        set_list_ReservationListSpecificDate(yearInputAdmin.get(),monthInputAdmin.get(),dayInputAdmin.get(),hourInputAdmin.get(),ctrl_Programari,parkingDetailsList)
+    else:
+        set_labels_TotalAvailableBookedForToday(totalLots, availableLots, emptyLots, ctrl_Parcari,hourInputAdmin.get())
+        set_list_ReservationListToday(hourInputAdmin.get(),ctrl_Programari,parkingDetailsList)
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def selectUserDate(p1, canvas):
+def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list):
     print('klambi_support.selectUserDate')
     print('p1 = {0}'.format(p1))
+    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get())
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
@@ -133,10 +196,67 @@ def destroy_window():
     top_level.destroy()
     top_level = None
 
-if __name__ == '__main__':
-    import gui
-    gui.vp_start_gui()
+def set_list_ParcariCapacitiesOccupied(list, ctrl_Parcari):
+    list.delete(0, END)
+    for row in ctrl_Parcari.getParcariWithCapacitiesAndOccupied():
+        list.insert(END, row)
+
+def set_labels_TotalAvailableBooked(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_parcari):
+    results=ctrl_parcari.getTotalCapacityBookedAvailable()
+    totalLotsLabel.configure(text=results[0])
+    availableLotsLabel.configure(text=results[1])
+    bookedLotsLabel.configure(text=results[2])
+
+def set_list_ParcariUpdateList(list,ctrl_Parcari):
+    list.delete(0, END)
+    for row in ctrl_Parcari.getAllParcariIdLocatie():
+        list.insert(END, row)
+
+def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,day,hour):
+    list.delete(0, END)
+    if(len(year)!=0 and len(month)!=0 and len(day)!=0):
+        for row in ctrl_Parcari.getParcariAvailableLotsOnSpecificDate(year,month,day,hour):
+            list.insert(END,row)
+    else:
+        for row in ctrl_Parcari.getParcariAvailableLotsToday(hour):
+            list.insert(END,row)
+
+def set_list_ProfitListByDay(list, ctrl_Programari):
+    list.delete(0,END)
+    for row in ctrl_Programari.getProfitByDay():
+        list.insert(END,row)
+
+def set_list_ProfitListByWeek(list, ctrl_Programari):
+    list.delete(0,END)
+    for row in ctrl_Programari.getProfitByWeek():
+        list.insert(END,row)
+
+def set_list_ProfitListByMonth(list, ctrl_Programari):
+    list.delete(0,END)
+    for row in ctrl_Programari.getProfitByMonth():
+        list.insert(END,row)
 
 
+def set_labels_TotalAvailableBookedForSpecificDate(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_parcari, year,month,day,hour):
+    results=ctrl_parcari.getTotalCapacityBookedAvailableForSpecificDate(year,month,day,hour)
+    totalLotsLabel.configure(text=results[0])
+    availableLotsLabel.configure(text=results[1])
+    bookedLotsLabel.configure(text=results[2])
 
 
+def set_labels_TotalAvailableBookedForToday(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_parcari, hour):
+    results=ctrl_parcari.getTotalCapacityBookedAvailableForToday(hour)
+    totalLotsLabel.configure(text=results[0])
+    availableLotsLabel.configure(text=results[1])
+    bookedLotsLabel.configure(text=results[2])
+
+def set_list_ReservationListSpecificDate(year,month,day,hour,ctrl_Programari,list):
+    list.delete(0, END)
+    for row in ctrl_Programari.getReservationsSpecificDate(year,month,day,hour):
+        list.insert(END, row)
+
+def set_list_ReservationListToday(hour,ctrl_Programari,list):
+    list.delete(0, END)
+    print("GOTHCAAAA")
+    for row in ctrl_Programari.getReservationsToday(hour):
+        list.insert(END, row)
