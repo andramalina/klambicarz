@@ -26,3 +26,11 @@ class User_Model(Basic_Model):
         self.cursor.execute(sql_insert,val)                             #valorile de mai sus (fiecare %s e de fapt un
         self.db.commit()                                                #obiect din val)
         print("am insertat")
+
+    def verify_user(self,username,password):
+        print("yuhuu",username,password)
+        sql_select="select tip from user where username=%s and password=%s"
+        val=(username,password)
+        self.cursor.execute(sql_select,val)
+        records=self.cursor.fetchone()
+        return records

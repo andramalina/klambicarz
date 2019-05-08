@@ -8,6 +8,11 @@
 import sys
 from PIL import Image, ImageTk
 
+
+from klambicarz.Controller.Users_Controller import Users_Controller
+from klambicarz.Controller.Parcari_Controller import Parcari_Controller
+from klambicarz.Controller.Programari_Controller import Programari_Controller
+
 try:
     import Tkinter as tk
 except ImportError:
@@ -20,7 +25,7 @@ except ImportError:
     import tkinter.ttk as ttk
     py3 = True
 
-import klambi_support
+from klambicarz.View import klambi_support
 import os.path
 
 def vp_start_gui():
@@ -63,6 +68,18 @@ class Toplevel1:
     def __init__(self, top=None):
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
+
+
+
+
+
+        '''
+        AICI DEGINIM CONTROLLERELE!!!'''
+
+        self.__ctrl_Users=Users_Controller()
+        self.__ctrl_Parcari=Parcari_Controller()
+        self.__ctrl_Programari=Programari_Controller()
+
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
@@ -178,7 +195,7 @@ class Toplevel1:
         self.LoginButton.configure(highlightcolor="black")
         self.LoginButton.configure(pady="0")
         self.LoginButton.configure(text='''Login''')
-        self.LoginButton.bind('<Button-1>',lambda e:klambi_support.login(e, self.UserMainPage))
+        self.LoginButton.bind('<Button-1>',lambda e:klambi_support.login(e, self.UserMainPage, self.AdminMainPage, self.UsernameInput, self.PasswordInput, self.__ctrl_Users, self.yourRoleLabel, self.yourRoleLabel2, self.yourUsernameLabel, self.yourUsernameLabel2))
 
         self.TitleKlambi = tk.Label(self.LoginPage)
         self.TitleKlambi.place(relx=0.119, rely=0.043, height=43, width=152)
@@ -340,7 +357,7 @@ class Toplevel1:
         self.ManageParkingButton.configure(highlightcolor="black")
         self.ManageParkingButton.configure(pady="0")
         self.ManageParkingButton.configure(text='''Manage parking''')
-        self.ManageParkingButton.bind('<Button-1>',lambda e:klambi_support.manageParking(e, self.ChangeParkingStatusPage))
+        self.ManageParkingButton.bind('<Button-1>',lambda e:klambi_support.manageParking(e, self.ChangeParkingStatusPage,self.ChangeParkingList,self.__ctrl_Parcari))
 
         self.LogoutButton = tk.Button(self.AdminMainPage)
         self.LogoutButton.place(relx=0.711, rely=0.043, height=34, width=57)
@@ -394,7 +411,7 @@ class Toplevel1:
         self.ChangeButton.configure(highlightcolor="black")
         self.ChangeButton.configure(pady="0")
         self.ChangeButton.configure(text='''Change''')
-        self.ChangeButton.bind('<Button-1>',lambda e:klambi_support.changePakingStatus(e, self.BackgroundImage, self.AdminMainPage))
+        self.ChangeButton.bind('<Button-1>',lambda e:klambi_support.changePakingStatus(e, self.BackgroundImage, self.AdminMainPage, self.ParkingIDChangeInput, self.NewStatusChangeInput, self.__ctrl_Parcari,self.__ctrl_Programari))
 
         self.CancelButton = tk.Button(self.ChangeParkingStatusPage)
         self.CancelButton.place(relx=0.051, rely=0.726, height=44, width=130)
@@ -579,7 +596,7 @@ class Toplevel1:
         self.CheckAvailabilityButton.configure(highlightcolor="black")
         self.CheckAvailabilityButton.configure(pady="0")
         self.CheckAvailabilityButton.configure(text='''Check availability''')
-        self.CheckAvailabilityButton.bind('<Button-1>',lambda e:klambi_support.checkAvailability(e, self.AvailabilityPage))
+        self.CheckAvailabilityButton.bind('<Button-1>',lambda e:klambi_support.checkAvailability(e, self.AvailabilityPage, self.AvailableLotsByParkingList,self.TotalLots2, self.EmptyLots2, self.BookedLots2, self.__ctrl_Parcari))
 
         self.RoleLabel3 = tk.Label(self.UserMainPage)
         self.RoleLabel3.place(relx=0.158, rely=0.41, height=26, width=60)
@@ -828,7 +845,7 @@ class Toplevel1:
         self.ProfitByDayButton.configure(highlightcolor="black")
         self.ProfitByDayButton.configure(pady="0")
         self.ProfitByDayButton.configure(text='''Day''')
-        self.ProfitByDayButton.bind('<Button-1>',lambda e:klambi_support.profitByDay(e))
+        self.ProfitByDayButton.bind('<Button-1>',lambda e:klambi_support.profitByDay(e, self.ProfitDetailsList, self.__ctrl_Programari, self.ShowingProfitLabel))
 
         self.ProfitByWeekButton = tk.Button(self.ProfitDetailsPage)
         self.ProfitByWeekButton.place(relx=0.083, rely=0.475, height=44
@@ -843,7 +860,7 @@ class Toplevel1:
         self.ProfitByWeekButton.configure(highlightcolor="black")
         self.ProfitByWeekButton.configure(pady="0")
         self.ProfitByWeekButton.configure(text='''Week''')
-        self.ProfitByWeekButton.bind('<Button-1>',lambda e:klambi_support.profitByWeek(e))
+        self.ProfitByWeekButton.bind('<Button-1>',lambda e:klambi_support.profitByWeek(e, self.ProfitDetailsList, self.__ctrl_Programari,self.ShowingProfitLabel))
 
         self.ProfitByMonthButton = tk.Button(self.ProfitDetailsPage)
         self.ProfitByMonthButton.place(relx=0.083, rely=0.626, height=44
@@ -858,7 +875,7 @@ class Toplevel1:
         self.ProfitByMonthButton.configure(highlightcolor="black")
         self.ProfitByMonthButton.configure(pady="0")
         self.ProfitByMonthButton.configure(text='''Month''')
-        self.ProfitByMonthButton.bind('<Button-1>',lambda e:klambi_support.profitByMonth(e))
+        self.ProfitByMonthButton.bind('<Button-1>',lambda e:klambi_support.profitByMonth(e,self.ProfitDetailsList, self.__ctrl_Programari,self.ShowingProfitLabel))
 
         self.ShowProfitByLabel = tk.Label(self.ProfitDetailsPage)
         self.ShowProfitByLabel.place(relx=0.066, rely=0.194, height=33
@@ -1137,7 +1154,8 @@ class Toplevel1:
         self.ParkingIDReservationInput.configure(selectforeground="black")
         self.ParkingIDReservationInput.configure(width=124)
 
-        self.FastChargingCheckbox = tk.Checkbutton(self.ReservationPage)
+        self.fastChargingCheckBoxState=tk.StringVar()
+        self.FastChargingCheckbox = tk.Checkbutton(self.ReservationPage, variable=self.fastChargingCheckBoxState, onvalue = "fast", offvalue = "normal")
         self.FastChargingCheckbox.place(relx=0.498, rely=0.605, relheight=0.054
                 , relwidth=0.367)
         self.FastChargingCheckbox.configure(activebackground="#ececec")
@@ -1150,7 +1168,7 @@ class Toplevel1:
         self.FastChargingCheckbox.configure(highlightcolor="black")
         self.FastChargingCheckbox.configure(justify='left')
         self.FastChargingCheckbox.configure(text='''I want fast charging''')
-        self.FastChargingCheckbox.configure(variable=klambi_support.che100)
+
 
         self.CarRegNoLabel = tk.Label(self.ReservationPage)
         self.CarRegNoLabel.place(relx=0.547, rely=0.41, height=35, width=188)
@@ -1207,7 +1225,7 @@ while fast charging reservations are only 1 hour.''')
         self.ConfirmNewReservationButton.configure(highlightcolor="black")
         self.ConfirmNewReservationButton.configure(pady="0")
         self.ConfirmNewReservationButton.configure(text='''Confirm''')
-        self.ConfirmNewReservationButton.bind('<Button-1>',lambda e:klambi_support.confirmNewReservation(e, self.BackgroundImage, self.UserMainPage))
+        self.ConfirmNewReservationButton.bind('<Button-1>',lambda e:klambi_support.confirmNewReservation(e, self.BackgroundImage, self.UserMainPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser, self.ParkingIDReservationInput, self.CarRegNoInput, self.fastChargingCheckBoxState, self.__ctrl_Programari))
 
         self.SelectDateAdminPage = tk.Canvas(top)
         self.SelectDateAdminPage.place(relx=0.427, rely=0.219, relheight=0.588
@@ -1338,7 +1356,7 @@ while fast charging reservations are only 1 hour.''')
         self.SelectDateButtonAdmin.configure(highlightcolor="black")
         self.SelectDateButtonAdmin.configure(pady="0")
         self.SelectDateButtonAdmin.configure(text='''Select''')
-        self.SelectDateButtonAdmin.bind('<Button-1>',lambda e:klambi_support.selectAdminDate(e, self.ParkingDetailsPage))
+        self.SelectDateButtonAdmin.bind('<Button-1>',lambda e:klambi_support.selectAdminDate(e, self.ParkingDetailsPage, self.YearInputAdmin, self.MonthInputAdmin, self.DayInputAdmin, self.HourInputAdmin, self.__ctrl_Parcari, self.__ctrl_Programari, self.TotalLots,self.EmptyLots,self.BookedLots, self.ParkingDetailsList))
 
         self.HourLabelAdmin = tk.Label(self.SelectDateAdminPage)
         self.HourLabelAdmin.place(relx=0.313, rely=0.402, height=35, width=128)
@@ -1509,7 +1527,7 @@ current time/date will be selected''')
         self.SelectDateButtonUser.configure(highlightcolor="black")
         self.SelectDateButtonUser.configure(pady="0")
         self.SelectDateButtonUser.configure(text='''Select''')
-        self.SelectDateButtonUser.bind('<Button-1>',lambda e:klambi_support.selectUserDate(e, self.ReservationPage))
+        self.SelectDateButtonUser.bind('<Button-1>',lambda e:klambi_support.selectUserDate(e, self.ReservationPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser,self.__ctrl_Parcari, self.ReservationAvailabilityList))
 
         self.HourLabelUser = tk.Label(self.SelectDateUserPage)
         self.HourLabelUser.place(relx=0.313, rely=0.402, height=35, width=128)
@@ -1553,8 +1571,6 @@ current time/date will be selected''')
         tk.Misc.lift(self.BackgroundImage)
         tk.Misc.lift(self.LoginPage)
 
-if __name__ == '__main__':
-    vp_start_gui()
 
 
 
