@@ -10,15 +10,13 @@ from tkinter import messagebox
 from tkinter import *
 try:
     import Tkinter as tk
-except ImportError:
-    import tkinter as tk
-
-try:
+    import tkFont
     import ttk
-    py3 = False
-except ImportError:
+except ImportError:  # Python 3
+    import tkinter as tk
+    import tkinter.font as tkFont
     import tkinter.ttk as ttk
-    py3 = True
+
 
 def set_Tk_var():
     global che100
@@ -171,11 +169,14 @@ def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, 
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list):
+def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list, container):
     print('klambi_support.selectUserDate')
     print('p1 = {0}'.format(p1))
-    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get())
+    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get(), container)
+    # ridicam intai canvasul, apoi container-ul listei, apoi lista - ordinea opusa fata de cum se vad pe ecran
     tk.Misc.lift(canvas)
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
     sys.stdout.flush()
 
 def viewProfit(p1, canvas):
@@ -212,14 +213,41 @@ def set_list_ParcariUpdateList(list,ctrl_Parcari):
     for row in ctrl_Parcari.getAllParcariIdLocatie():
         list.insert(END, row)
 
-def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,day,hour):
-    list.delete(0, END)
+def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,day,hour, container):
+
+    list_to_add = [] #definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['ID','Adress', 'Lots']  #copia fidela a listei de capete de tabel
     if(len(year)!=0 and len(month)!=0 and len(day)!=0):
         for row in ctrl_Parcari.getParcariAvailableLotsOnSpecificDate(year,month,day,hour):
-            list.insert(END,row)
+            list_to_add.append(row)  #retinem fiecare rezultat al functiei in lista initiata goala
     else:
         for row in ctrl_Parcari.getParcariAvailableLotsToday(hour):
-            list.insert(END,row)
+            list_to_add.append(row)
+
+    for item in list_to_add:    #pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)     #adaugam in obiectul de tip tree
+        list.column(list_header[0], width=50)
+        list.column(list_header[1], width=155)
+        list.column(list_header[2], width=50)
+
+
+    tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
+
+def sortby(tree, col, descending):
+    """functia de sortare la click"""
+    # grab values to sort
+    data = [(tree.set(child, col), child) \
+        for child in tree.get_children('')]
+    # if the data to be sorted is numeric change to float
+    #data =  change_numeric(data)
+    # now sort the data in place
+    data.sort(reverse=descending)
+    for ix, item in enumerate(data):
+        tree.move(item[1], '', ix)
+    # switch the heading so it will sort in the opposite direction
+    tree.heading(col, command=lambda col=col: sortby(tree, col, \
+        int(not descending)))
 
 def set_list_ProfitListByDay(list, ctrl_Programari):
     list.delete(0,END)
