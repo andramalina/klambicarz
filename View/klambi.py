@@ -15,15 +15,12 @@ from klambicarz.Controller.Programari_Controller import Programari_Controller
 
 try:
     import Tkinter as tk
-except ImportError:
-    import tkinter as tk
-
-try:
+    import tkFont
     import ttk
-    py3 = False
-except ImportError:
+except ImportError:  # Python 3
+    import tkinter as tk
+    import tkinter.font as tkFont
     import tkinter.ttk as ttk
-    py3 = True
 
 from klambicarz.View import klambi_support
 import os.path
@@ -1101,18 +1098,39 @@ class Toplevel1:
         self.CancelReservationButton.configure(text='''Cancel''')
         self.CancelReservationButton.bind('<Button-1>',lambda e:klambi_support.backToUserMainPage(e, self.BackgroundImage, self.UserMainPage))
 
-        self.ReservationAvailabilityList = tk.Listbox(self.ReservationPage)
-        self.ReservationAvailabilityList.place(relx=0.066, rely=0.238
-                , relheight=0.523, relwidth=0.371)
-        self.ReservationAvailabilityList.configure(background="white")
-        self.ReservationAvailabilityList.configure(disabledforeground="#a3a3a3")
-        self.ReservationAvailabilityList.configure(font="TkFixedFont")
-        self.ReservationAvailabilityList.configure(foreground="#000000")
-        self.ReservationAvailabilityList.configure(highlightbackground="#d9d9d9")
-        self.ReservationAvailabilityList.configure(highlightcolor="black")
-        self.ReservationAvailabilityList.configure(selectbackground="#c4c4c4")
-        self.ReservationAvailabilityList.configure(selectforeground="black")
-        self.ReservationAvailabilityList.configure(width=224)
+        self.container_canvas = tk.Canvas(top) #definim un canvas nou, care contine container-ul listei
+        self.container_canvas.place(relx=0.346, rely=0.268
+                , relheight=0.443, relwidth=0.281) #relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas.configure(background="#d9d9d9")
+        self.container_canvas.configure(borderwidth="2")
+        self.container_canvas.configure(highlightbackground="#d9d9d9")
+        self.container_canvas.configure(highlightcolor="black")
+        self.container_canvas.configure(insertbackground="black")
+        self.container_canvas.configure(relief='ridge')
+        self.container_canvas.configure(selectbackground="#c4c4c4")
+        self.container_canvas.configure(selectforeground="black")
+
+        container = ttk.Frame(self.container_canvas)   #definim container-ul listei !!! neaparat frame
+
+        container.pack(fill='both', expand=True)
+
+        list_header = ['ID', 'Adress', 'Lots']      #lista de capete de talel
+
+        self.tree = ttk.Treeview(columns=list_header, show="headings")  #definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree.xview)
+        self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree.grid(column=0, row=0, sticky='nsew', in_=container)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container)
+        hsb.grid(column=0, row=1, sticky='ew', in_=container)       #ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container.grid_columnconfigure(0, weight=1)
+        container.grid_rowconfigure(0, weight=1)
+
+        for col in list_header:
+            #definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree, c, 0))
+            # adjust the column's width to the header string
+            self.tree.column(col, width=tkFont.Font().measure(col.title()))
 
         self.AvailableLotsReservationLabel = tk.Label(self.ReservationPage)
         self.AvailableLotsReservationLabel.place(relx=0.05, rely=0.151, height=33
@@ -1527,7 +1545,7 @@ current time/date will be selected''')
         self.SelectDateButtonUser.configure(highlightcolor="black")
         self.SelectDateButtonUser.configure(pady="0")
         self.SelectDateButtonUser.configure(text='''Select''')
-        self.SelectDateButtonUser.bind('<Button-1>',lambda e:klambi_support.selectUserDate(e, self.ReservationPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser,self.__ctrl_Parcari, self.ReservationAvailabilityList))
+        self.SelectDateButtonUser.bind('<Button-1>',lambda e:klambi_support.selectUserDate(e, self.ReservationPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser,self.__ctrl_Parcari, self.tree, self.container_canvas))
 
         self.HourLabelUser = tk.Label(self.SelectDateUserPage)
         self.HourLabelUser.place(relx=0.313, rely=0.402, height=35, width=128)
