@@ -214,7 +214,7 @@ def set_list_ParcariUpdateList(list,ctrl_Parcari):
         list.insert(END, row)
 
 def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,day,hour, container):
-
+    list.delete(*list.get_children()) #golim lista initial, sa nu se intample ce zicea Andra
     list_to_add = [] #definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
     list_header = ['ID','Adress', 'Lots']  #copia fidela a listei de capete de tabel
     if(len(year)!=0 and len(month)!=0 and len(day)!=0):
