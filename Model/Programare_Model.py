@@ -21,34 +21,40 @@ class Programare_Model(Basic_Model):
 
         print("TIP")
         print(tip_incarcare)
-        sql_select="select max(id_programare) from programare"
-        self.cursor.execute(sql_select)
-        result=self.cursor.fetchone()
-        id_programare=result[0]+1
 
-        sql_insert="insert into programare values(%s,%s,%s,date(concat_ws('-',%s,%s,%s)),time(concat_ws(':',%s,00,00)),time(concat_ws(':',%s,00,00)),%s)"
-        if(tip_incarcare=="fast"):
-            leaveHour=int(hour)+1
-        else:
-            leaveHour=int(hour)+2
-        val = (id_programare, id_parcare, nr_inmatriculare, year,month,day,hour, leaveHour, tip_incarcare)
-        self.cursor.execute(sql_insert, val)
-        self.db.commit()
+        week=0
+        while(week<70):
+            sql_select = "select max(id_programare) from programare"
+            self.cursor.execute(sql_select)
+            result = self.cursor.fetchone()
+            id_programare = result[0] + 1
+            sql_insert="insert into programare values(%s,%s,%s,date_add(date(concat_ws('-',%s,%s,%s)),interval %s day),time(concat_ws(':',%s,00,00)),time(concat_ws(':',%s,00,00)),%s)"
+            if(tip_incarcare=="fast"):
+                leaveHour=int(hour)+1
+            else:
+                leaveHour=int(hour)+2
+            val = (id_programare, id_parcare, nr_inmatriculare, year,month,day,week,hour, leaveHour, tip_incarcare)
+            self.cursor.execute(sql_insert, val)
+            self.db.commit()
+            week=week+7
 
     def insertProgramareToday(self, id_parcare,hour,nr_inmatriculare,tip_incarcare):
-        sql_select = "select max(id_programare) from programare"
-        self.cursor.execute(sql_select)
-        result = self.cursor.fetchone()
-        id_programare = result[0] + 1
+        week=0
+        while(week<70):
+            sql_select = "select max(id_programare) from programare"
+            self.cursor.execute(sql_select)
+            result = self.cursor.fetchone()
+            id_programare = result[0] + 1
 
-        sql_insert = "insert into programare values(%s,%s,%s,date(sysdate()),time(concat_ws(':',%s,00,00)),time(concat_ws(':',%s,00,00)),%s)"
-        if (tip_incarcare == "fast"):
-            leaveHour = int(hour) + 1
-        else:
-            leaveHour = int(hour) + 2
-        val = (id_programare, id_parcare, nr_inmatriculare, hour, leaveHour, tip_incarcare)
-        self.cursor.execute(sql_insert, val)
-        self.db.commit()
+            sql_insert = "insert into programare values(%s,%s,%s,date_add(date(sysdate()),interval %s day),time(concat_ws(':',%s,00,00)),time(concat_ws(':',%s,00,00)),%s)"
+            if (tip_incarcare == "fast"):
+                leaveHour = int(hour) + 1
+            else:
+                leaveHour = int(hour) + 2
+            val = (id_programare, id_parcare, nr_inmatriculare, week, hour, leaveHour, tip_incarcare)
+            self.cursor.execute(sql_insert, val)
+            self.db.commit()
+            week=week+7
 
     def deleteProgramariByParcareAndAfterSysdate(self, id_parcare):
         sql_delete="delete from programare where id_parcare=%s and data_programare>=date(sysdate())"
