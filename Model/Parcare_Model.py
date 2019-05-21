@@ -14,7 +14,7 @@ class Parcare_Model(Basic_Model):
 
 
     def getAllParcariIdLocatie(self):
-        sql_select="select id_parcare,locatie from parcare"
+        sql_select="select id_parcare,locatie,status from parcare"
         self.cursor.execute(sql_select)
         records=self.cursor.fetchall()
         return records
@@ -43,9 +43,11 @@ class Parcare_Model(Basic_Model):
         return records
 
     def getParcariWithCapacitiesAndOccupied(self):
-        sql_select="select pro.id_parcare, par.locatie, capacitate, count(*), capacitate-count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) group by pro.id_parcare"
+        #sql_select="select pro.id_parcare, par.locatie, par.capacitate, count(*), capacitate-count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) group by pro.id_parcare"
+        sql_select="select pro.id_parcare, par.locatie, capacitate-count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) group by pro.id_parcare"
         self.cursor.execute(sql_select)
         records=self.cursor.fetchall()
+        print(records)
         return records
 
     def getParcariAvailableLotsOnSpecificDate(self,year,month,day,hour):

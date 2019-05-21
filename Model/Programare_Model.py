@@ -85,6 +85,7 @@ class Programare_Model(Basic_Model):
         val=(year,month,day,hour)
         self.cursor.execute(sql_select,val)
         records=self.cursor.fetchall()
+        print(records)
         return records
 
     def getReservationsToday(self,hour):
@@ -92,5 +93,6 @@ class Programare_Model(Basic_Model):
         val=(hour,)
         self.cursor.execute(sql_select,val)
         records=self.cursor.fetchall()
+        print(records)
         return records
 

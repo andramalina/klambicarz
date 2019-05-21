@@ -1,5 +1,5 @@
-from klambicarz.View import klambi
-from klambicarz.View import klambi_support
+from View import klambi
+from View import klambi_support
 
 def main():
     print("smecherele astea de fete fac aplicatie faina")

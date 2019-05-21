@@ -1,7 +1,7 @@
 
-from klambicarz.Model.User_Model import User_Model
-from klambicarz.Model.User import User
-from klambicarz.Validator import User_Validator
+from Model.User_Model import User_Model
+from Model.User import User
+from Validator import User_Validator
 class Users_Controller(object):
     def __init__(self):
         '''
