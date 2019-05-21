@@ -387,7 +387,7 @@ class Toplevel1:
         self.container_canvas3 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
         self.container_canvas3.place(relx=0.67, rely=0.230
                                      , relheight=0.500,
-                                     relwidth=0.330)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+                                     relwidth=0.310)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
         self.container_canvas3.configure(background="#d9d9d9")
         self.container_canvas3.configure(borderwidth="2")
         self.container_canvas3.configure(highlightbackground="#d9d9d9")
@@ -795,7 +795,7 @@ class Toplevel1:
         self.container_canvas4 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
         self.container_canvas4.place(relx=0.55, rely=0.288
                                     , relheight=0.550,
-                                    relwidth=0.380)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+                                    relwidth=0.350)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
         self.container_canvas4.configure(background="#d9d9d9")
         self.container_canvas4.configure(borderwidth="2")
         self.container_canvas4.configure(highlightbackground="#d9d9d9")
@@ -809,7 +809,7 @@ class Toplevel1:
 
         container4.pack(fill='both', expand=True)
 
-        list_header = ['ID', 'Adress', 'Available Lots']  # lista de capete de talel
+        list_header = ['Reservation Id', 'Car Number', 'Parking Id']  # lista de capete de talel
 
         self.tree4 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
         vsb = ttk.Scrollbar(orient="vertical", command=self.tree4.yview)
@@ -895,6 +895,114 @@ class Toplevel1:
         self.ProfitDetailsBackButton.configure(text='''Back''')
         self.ProfitDetailsBackButton.bind('<Button-1>',lambda e:klambi_support.backToAdminMainPage(e, self.BackgroundImage, self.AdminMainPage))
 
+        self.container_canvas5 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas5.place(relx=0.53, rely=0.288
+                                    , relheight=0.600,
+                                    relwidth=0.400)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas5.configure(background="#d9d9d9")
+        self.container_canvas5.configure(borderwidth="2")
+        self.container_canvas5.configure(highlightbackground="#d9d9d9")
+        self.container_canvas5.configure(highlightcolor="black")
+        self.container_canvas5.configure(insertbackground="black")
+        self.container_canvas5.configure(relief='ridge')
+        self.container_canvas5.configure(selectbackground="#c4c4c4")
+        self.container_canvas5.configure(selectforeground="black")
+
+        container5 = ttk.Frame(self.container_canvas5)  # definim container-ul listei !!! neaparat frame
+
+        container5.pack(fill='both', expand=True)
+
+        list_header = ['Day', 'Normal charging', 'Fast charging', 'Total profit']  # lista de capete de talel
+
+        self.tree5 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree5.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree5.xview)
+        self.tree5.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree5.grid(column=0, row=0, sticky='nsew', in_=container5)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container5)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container5)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container5.grid_columnconfigure(0, weight=1)
+        container5.grid_rowconfigure(0, weight=1)
+
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree5.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree5, c, 0))
+            # adjust the column's width to the header string
+            self.tree5.column(col, width=tkFont.Font().measure(col.title()))
+
+
+
+        self.container_canvas6 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas6.place(relx=0.53, rely=0.288
+                                     , relheight=0.600,
+                                     relwidth=0.400)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas6.configure(background="#d9d9d9")
+        self.container_canvas6.configure(borderwidth="2")
+        self.container_canvas6.configure(highlightbackground="#d9d9d9")
+        self.container_canvas6.configure(highlightcolor="black")
+        self.container_canvas6.configure(insertbackground="black")
+        self.container_canvas6.configure(relief='ridge')
+        self.container_canvas6.configure(selectbackground="#c4c4c4")
+        self.container_canvas6.configure(selectforeground="black")
+
+        container6 = ttk.Frame(self.container_canvas6)  # definim container-ul listei !!! neaparat frame
+
+        container6.pack(fill='both', expand=True)
+
+        list_header = ['Year', 'Week', 'Normal charging', 'Fast charging', 'Total profit']  # lista de capete de talel
+
+        self.tree6 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree6.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree6.xview)
+        self.tree6.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree6.grid(column=0, row=0, sticky='nsew', in_=container6)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container6)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container6)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container6.grid_columnconfigure(0, weight=1)
+        container6.grid_rowconfigure(0, weight=1)
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree6.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree6, c, 0))
+            # adjust the column's width to the header string
+            self.tree6.column(col, width=tkFont.Font().measure(col.title()))
+
+        self.container_canvas7 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas7.place(relx=0.53, rely=0.288
+                                     , relheight=0.600,
+                                     relwidth=0.400)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas7.configure(background="#d9d9d9")
+        self.container_canvas7.configure(borderwidth="2")
+        self.container_canvas7.configure(highlightbackground="#d9d9d9")
+        self.container_canvas7.configure(highlightcolor="black")
+        self.container_canvas7.configure(insertbackground="black")
+        self.container_canvas7.configure(relief='ridge')
+        self.container_canvas7.configure(selectbackground="#c4c4c4")
+        self.container_canvas7.configure(selectforeground="black")
+
+        container7 = ttk.Frame(self.container_canvas7)  # definim container-ul listei !!! neaparat frame
+
+        container7.pack(fill='both', expand=True)
+
+        list_header = ['Year', 'Month', 'Normal charging', 'Fast charging', 'Total profit']  # lista de capete de talel
+
+        self.tree7 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree7.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree7.xview)
+        self.tree7.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree7.grid(column=0, row=0, sticky='nsew', in_=container7)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container7)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container5)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container7.grid_columnconfigure(0, weight=1)
+        container7.grid_rowconfigure(0, weight=1)
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree7.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree7, c, 0))
+            # adjust the column's width to the header string
+            self.tree7.column(col, width=tkFont.Font().measure(col.title()))
+
         self.ProfitListLabel = tk.Label(self.ProfitDetailsPage)
         self.ProfitListLabel.place(relx=0.464, rely=0.173, height=43, width=152)
         self.ProfitListLabel.configure(activebackground="#f9f9f9")
@@ -920,7 +1028,7 @@ class Toplevel1:
         self.ProfitByDayButton.configure(highlightcolor="black")
         self.ProfitByDayButton.configure(pady="0")
         self.ProfitByDayButton.configure(text='''Day''')
-        self.ProfitByDayButton.bind('<Button-1>',lambda e:klambi_support.profitByDay(e, self.ProfitDetailsList, self.__ctrl_Programari, self.ShowingProfitLabel))
+        self.ProfitByDayButton.bind('<Button-1>',lambda e:klambi_support.profitByDay(e, self.__ctrl_Programari, self.ShowingProfitLabel,self.tree5,self.container_canvas5))
 
         self.ProfitByWeekButton = tk.Button(self.ProfitDetailsPage)
         self.ProfitByWeekButton.place(relx=0.083, rely=0.475, height=44
@@ -935,7 +1043,7 @@ class Toplevel1:
         self.ProfitByWeekButton.configure(highlightcolor="black")
         self.ProfitByWeekButton.configure(pady="0")
         self.ProfitByWeekButton.configure(text='''Week''')
-        self.ProfitByWeekButton.bind('<Button-1>',lambda e:klambi_support.profitByWeek(e, self.ProfitDetailsList, self.__ctrl_Programari,self.ShowingProfitLabel))
+        self.ProfitByWeekButton.bind('<Button-1>',lambda e:klambi_support.profitByWeek(e, self.__ctrl_Programari, self.ShowingProfitLabel,self.tree6,self.container_canvas6))
 
         self.ProfitByMonthButton = tk.Button(self.ProfitDetailsPage)
         self.ProfitByMonthButton.place(relx=0.083, rely=0.626, height=44
@@ -950,7 +1058,7 @@ class Toplevel1:
         self.ProfitByMonthButton.configure(highlightcolor="black")
         self.ProfitByMonthButton.configure(pady="0")
         self.ProfitByMonthButton.configure(text='''Month''')
-        self.ProfitByMonthButton.bind('<Button-1>',lambda e:klambi_support.profitByMonth(e,self.ProfitDetailsList, self.__ctrl_Programari,self.ShowingProfitLabel))
+        self.ProfitByMonthButton.bind('<Button-1>',lambda e:klambi_support.profitByMonth(e, self.__ctrl_Programari, self.ShowingProfitLabel,self.tree7,self.container_canvas7))
 
         self.ShowProfitByLabel = tk.Label(self.ProfitDetailsPage)
         self.ShowProfitByLabel.place(relx=0.066, rely=0.194, height=33
@@ -968,7 +1076,6 @@ class Toplevel1:
 
         self.ShowingProfitLabel = tk.Label(self.ProfitDetailsPage)
         self.ShowingProfitLabel.place(relx=0.73, rely=0.173, height=43, width=62)
-
         self.ShowingProfitLabel.configure(activebackground="#f9f9f9")
         self.ShowingProfitLabel.configure(activeforeground="black")
         self.ShowingProfitLabel.configure(background="#d9d9d9")
@@ -979,18 +1086,18 @@ class Toplevel1:
         self.ShowingProfitLabel.configure(highlightcolor="black")
         self.ShowingProfitLabel.configure(text='''day''')
 
-        self.ProfitDetailsList = tk.Listbox(self.ProfitDetailsPage)
-        self.ProfitDetailsList.place(relx=0.464, rely=0.324, relheight=0.566
-                , relwidth=0.405)
-        self.ProfitDetailsList.configure(background="white")
-        self.ProfitDetailsList.configure(disabledforeground="#a3a3a3")
-        self.ProfitDetailsList.configure(font="TkFixedFont")
-        self.ProfitDetailsList.configure(foreground="#000000")
-        self.ProfitDetailsList.configure(highlightbackground="#d9d9d9")
-        self.ProfitDetailsList.configure(highlightcolor="black")
-        self.ProfitDetailsList.configure(selectbackground="#c4c4c4")
-        self.ProfitDetailsList.configure(selectforeground="black")
-        self.ProfitDetailsList.configure(width=244)
+        # self.ProfitDetailsList = tk.Listbox(self.ProfitDetailsPage)
+        # self.ProfitDetailsList.place(relx=0.464, rely=0.324, relheight=0.566
+        #         , relwidth=0.405)
+        # self.ProfitDetailsList.configure(background="white")
+        # self.ProfitDetailsList.configure(disabledforeground="#a3a3a3")
+        # self.ProfitDetailsList.configure(font="TkFixedFont")
+        # self.ProfitDetailsList.configure(foreground="#000000")
+        # self.ProfitDetailsList.configure(highlightbackground="#d9d9d9")
+        # self.ProfitDetailsList.configure(highlightcolor="black")
+        # self.ProfitDetailsList.configure(selectbackground="#c4c4c4")
+        # self.ProfitDetailsList.configure(selectforeground="black")
+        # self.ProfitDetailsList.configure(width=244)
 
 
         self.AvailabilityPage = tk.Canvas(top)

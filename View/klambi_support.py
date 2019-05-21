@@ -95,25 +95,41 @@ def newReservation(p1, canvas):
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def profitByDay(p1,profitDetailsList, ctrl_Programari,label):
+def profitByDay(p1, ctrl_Programari, label ,list, container):
     print('klambi_support.profitByDay')
     print('p1 = {0}'.format(p1))
-    set_list_ProfitListByDay(profitDetailsList,ctrl_Programari)
+    set_list_ProfitListByDay(list, ctrl_Programari, container)
     label.configure(text='day')
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
     sys.stdout.flush()
 
-def profitByMonth(p1,profitDetailsList, ctrl_Programari,label):
+def profitByMonth(p1, ctrl_Programari,label,list,container):
     print('klambi_support.profitByMonth')
     print('p1 = {0}'.format(p1))
-    set_list_ProfitListByMonth(profitDetailsList,ctrl_Programari)
+    set_list_ProfitListByMonth(list,ctrl_Programari,container)
     label.configure(text='month')
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
     sys.stdout.flush()
 
-def profitByWeek(p1,profitDetailsList, ctrl_Programari,label):
+def profitByWeek(p1, ctrl_Programari,label, list, container):
     print('klambi_support.profitByWeek')
     print('p1 = {0}'.format(p1))
-    set_list_ProfitListByWeek(profitDetailsList,ctrl_Programari)
+    set_list_ProfitListByWeek(list,ctrl_Programari,container)
     label.configure(text='week')
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
+    sys.stdout.flush()
+
+def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list, container):
+    print('klambi_support.selectUserDate')
+    print('p1 = {0}'.format(p1))
+    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get(), container)
+    # ridicam intai canvasul, apoi container-ul listei, apoi lista - ordinea opusa fata de cum se vad pe ecran
+    tk.Misc.lift(canvas)
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
     sys.stdout.flush()
 
 def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, hourInputAdmin, ctrl_Parcari, ctrl_Programari, totalLots,availableLots,emptyLots, list,container):
@@ -134,15 +150,6 @@ def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, 
     tk.Misc.lift(list)
     sys.stdout.flush()
 
-def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list, container):
-    print('klambi_support.selectUserDate')
-    print('p1 = {0}'.format(p1))
-    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get(), container)
-    # ridicam intai canvasul, apoi container-ul listei, apoi lista - ordinea opusa fata de cum se vad pe ecran
-    tk.Misc.lift(canvas)
-    tk.Misc.lift(container)
-    tk.Misc.lift(list)
-    sys.stdout.flush()
 
 def checkAvailability(p1, canvas, totalLotsLabel,availableLotsLabel,bookedLotsLabel, ctrl_Parcari, list, container):
     print('klambi_support.checkAvailability')
@@ -232,7 +239,7 @@ def set_list_ParcariUpdateList(list,ctrl_Parcari,container):
         list.insert('', 'end', values=item)     #adaugam in obiectul de tip tree
         list.column(list_header[0], width=30)
         list.column(list_header[1], width=180)
-        list.column(list_header[2], width=100)
+        list.column(list_header[2], width=75)
     tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
     sys.stdout.flush()
 
@@ -272,13 +279,13 @@ def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,da
 def set_list_ReservationListSpecificDate(list, year,month,day,hour,ctrl_Programari,container):
     list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
     list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
-    list_header = ['ID', 'Adress', 'Available Lots']  # copia fidela a listei de capete de tabel
+    list_header = ['Reservation Id', 'Car Number', 'Parking Id']  # copia fidela a listei de capete de tabel
     for row in ctrl_Programari.getReservationsSpecificDate(year,month,day,hour):
         list_to_add.append(row)
     for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
         list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
-    list.column(list_header[0], width=50)
-    list.column(list_header[1], width=200)
+    list.column(list_header[0], width=100)
+    list.column(list_header[1], width=140)
     list.column(list_header[2], width=100)
     tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
     sys.stdout.flush()
@@ -286,13 +293,13 @@ def set_list_ReservationListSpecificDate(list, year,month,day,hour,ctrl_Programa
 def set_list_ReservationListToday(list, hour,ctrl_Programari,container):
     list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
     list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
-    list_header = ['ID', 'Adress', 'Available Lots']  # copia fidela a listei de capete de tabel
+    list_header = ['Reservation Id', 'Car Number', 'Parking Id']  # copia fidela a listei de capete de tabel
     for row in ctrl_Programari.getReservationsToday(hour):
         list_to_add.append(row)
     for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
         list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
-    list.column(list_header[0], width=50)
-    list.column(list_header[1], width=200)
+    list.column(list_header[0], width=100)
+    list.column(list_header[1], width=140)
     list.column(list_header[2], width=100)
     tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
     sys.stdout.flush()
@@ -312,20 +319,53 @@ def sortby(tree, col, descending):
     tree.heading(col, command=lambda col=col: sortby(tree, col, \
         int(not descending)))
 
-def set_list_ProfitListByDay(list, ctrl_Programari):
-    list.delete(0,END)
+def set_list_ProfitListByDay(list, ctrl_Programari, container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['Day', 'Normal charging', 'Fast charging','Total profit']  # copia fidela a listei de capete de tabel
     for row in ctrl_Programari.getProfitByDay():
-        list.insert(END,row)
+        list_to_add.append(row)
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
+    list.column(list_header[0], width=100)
+    list.column(list_header[1], width=100)
+    list.column(list_header[2], width=100)
+    list.column(list_header[3], width=80)
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
 
-def set_list_ProfitListByWeek(list, ctrl_Programari):
-    list.delete(0,END)
+
+def set_list_ProfitListByWeek(list, ctrl_Programari, container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['Year', 'Week', 'Normal charging', 'Fast charging', 'Total profit']  # copia fidela a listei de capete de tabel
     for row in ctrl_Programari.getProfitByWeek():
-        list.insert(END,row)
+        list_to_add.append(row)
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
+    list.column(list_header[0], width=50)
+    list.column(list_header[1], width=50)
+    list.column(list_header[2], width=100)
+    list.column(list_header[3], width=100)
+    list.column(list_header[4], width=80)
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
 
-def set_list_ProfitListByMonth(list, ctrl_Programari):
-    list.delete(0,END)
+def set_list_ProfitListByMonth(list,ctrl_Programari, container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['Year', 'Month', 'Normal charging', 'Fast charging', 'Total profit']  # copia fidela a listei de capete de tabel
     for row in ctrl_Programari.getProfitByMonth():
-        list.insert(END,row)
+        list_to_add.append(row)
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
+    list.column(list_header[0], width=50)
+    list.column(list_header[1], width=50)
+    list.column(list_header[2], width=100)
+    list.column(list_header[3], width=100)
+    list.column(list_header[4], width=80)
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
 
 
 def set_labels_TotalAvailableBookedForSpecificDate(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_parcari, year,month,day,hour):
