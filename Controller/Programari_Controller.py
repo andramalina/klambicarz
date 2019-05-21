@@ -1,5 +1,5 @@
-from klambicarz.Model.Programare_Model import Programare_Model
-from klambicarz.Validator import Programare_Validator
+from Model.Programare_Model import Programare_Model
+from Validator import Programare_Validator
 
 class Programari_Controller(object):
     def __init__(self):

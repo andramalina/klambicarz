@@ -9,9 +9,9 @@ import sys
 from PIL import Image, ImageTk
 
 
-from klambicarz.Controller.Users_Controller import Users_Controller
-from klambicarz.Controller.Parcari_Controller import Parcari_Controller
-from klambicarz.Controller.Programari_Controller import Programari_Controller
+from Controller.Users_Controller import Users_Controller
+from Controller.Parcari_Controller import Parcari_Controller
+from Controller.Programari_Controller import Programari_Controller
 
 try:
     import Tkinter as tk
@@ -22,7 +22,7 @@ except ImportError:  # Python 3
     import tkinter.font as tkFont
     import tkinter.ttk as ttk
 
-from klambicarz.View import klambi_support
+from View import klambi_support
 import os.path
 
 def vp_start_gui():
@@ -354,7 +354,8 @@ class Toplevel1:
         self.ManageParkingButton.configure(highlightcolor="black")
         self.ManageParkingButton.configure(pady="0")
         self.ManageParkingButton.configure(text='''Manage parking''')
-        self.ManageParkingButton.bind('<Button-1>',lambda e:klambi_support.manageParking(e, self.ChangeParkingStatusPage,self.ChangeParkingList,self.__ctrl_Parcari))
+        #self.ManageParkingButton.bind('<Button-1>',lambda e:klambi_support.manageParking(e, self.ChangeParkingStatusPage,self.ChangeParkingList,self.__ctrl_Parcari))
+        self.ManageParkingButton.bind('<Button-1>',lambda e: klambi_support.manageParking(e, self.ChangeParkingStatusPage,self.__ctrl_Parcari, self.tree3,self.container_canvas3))
 
         self.LogoutButton = tk.Button(self.AdminMainPage)
         self.LogoutButton.place(relx=0.711, rely=0.043, height=34, width=57)
@@ -383,6 +384,42 @@ class Toplevel1:
         self.ChangeParkingStatusPage.configure(selectforeground="black")
         self.ChangeParkingStatusPage.configure(width=583)
 
+        self.container_canvas3 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas3.place(relx=0.67, rely=0.230
+                                     , relheight=0.500,
+                                     relwidth=0.330)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas3.configure(background="#d9d9d9")
+        self.container_canvas3.configure(borderwidth="2")
+        self.container_canvas3.configure(highlightbackground="#d9d9d9")
+        self.container_canvas3.configure(highlightcolor="black")
+        self.container_canvas3.configure(insertbackground="black")
+        self.container_canvas3.configure(relief='ridge')
+        self.container_canvas3.configure(selectbackground="#c4c4c4")
+        self.container_canvas3.configure(selectforeground="black")
+
+        container3 = ttk.Frame(self.container_canvas3)  # definim container-ul listei !!! neaparat frame
+
+        container3.pack(fill='both', expand=True)
+
+        list_header = ['ID', 'Adress', 'Status']  # lista de capete de talel
+
+        self.tree3 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree3.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree3.xview)
+        self.tree3.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree3.grid(column=0, row=0, sticky='nsew', in_=container3)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container3)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container3)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container3.grid_columnconfigure(0, weight=1)
+        container3.grid_rowconfigure(0, weight=1)
+
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree3.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree3, c, 0))
+            # adjust the column's width to the header string
+            self.tree3.column(col, width=tkFont.Font().measure(col.title()))
+
         self.TitleChangeParkingStatus = tk.Label(self.ChangeParkingStatusPage)
         self.TitleChangeParkingStatus.place(relx=0.051, rely=0.066, height=43
                 , width=312)
@@ -408,6 +445,7 @@ class Toplevel1:
         self.ChangeButton.configure(highlightcolor="black")
         self.ChangeButton.configure(pady="0")
         self.ChangeButton.configure(text='''Change''')
+        #self.ChangeButton.bind('<Button-1>',lambda e:klambi_support.changePakingStatuse(e, self.BackgroundImage, self.AdminMainPage, self.ParkingIDChangeInput, self.NewStatusChangeInput, self.__ctrl_Parcari,self.__ctrl_Programari,self.tree2,self.container_canvas3))
         self.ChangeButton.bind('<Button-1>',lambda e:klambi_support.changePakingStatus(e, self.BackgroundImage, self.AdminMainPage, self.ParkingIDChangeInput, self.NewStatusChangeInput, self.__ctrl_Parcari,self.__ctrl_Programari))
 
         self.CancelButton = tk.Button(self.ChangeParkingStatusPage)
@@ -486,18 +524,18 @@ class Toplevel1:
         self.NewStatusLabel.configure(text='''New Status:''')
         self.NewStatusLabel.configure(width=108)
 
-        self.ChangeParkingList = tk.Listbox(self.ChangeParkingStatusPage)
-        self.ChangeParkingList.place(relx=0.617, rely=0.165, relheight=0.7
-                , relwidth=0.333)
-        self.ChangeParkingList.configure(background="white")
-        self.ChangeParkingList.configure(disabledforeground="#a3a3a3")
-        self.ChangeParkingList.configure(font="TkFixedFont")
-        self.ChangeParkingList.configure(foreground="#000000")
-        self.ChangeParkingList.configure(highlightbackground="#d9d9d9")
-        self.ChangeParkingList.configure(highlightcolor="black")
-        self.ChangeParkingList.configure(selectbackground="#c4c4c4")
-        self.ChangeParkingList.configure(selectforeground="black")
-        self.ChangeParkingList.configure(width=194)
+        # self.ChangeParkingList = tk.Listbox(self.ChangeParkingStatusPage)
+        # self.ChangeParkingList.place(relx=0.617, rely=0.165, relheight=0.7
+        #         , relwidth=0.333)
+        # self.ChangeParkingList.configure(background="white")
+        # self.ChangeParkingList.configure(disabledforeground="#a3a3a3")
+        # self.ChangeParkingList.configure(font="TkFixedFont")
+        # self.ChangeParkingList.configure(foreground="#000000")
+        # self.ChangeParkingList.configure(highlightbackground="#d9d9d9")
+        # self.ChangeParkingList.configure(highlightcolor="black")
+        # self.ChangeParkingList.configure(selectbackground="#c4c4c4")
+        # self.ChangeParkingList.configure(selectforeground="black")
+        # self.ChangeParkingList.configure(width=194)
 
         self.UserMainPage = tk.Canvas(top)
         self.UserMainPage.place(relx=0.071, rely=0.073, relheight=0.843
@@ -593,7 +631,11 @@ class Toplevel1:
         self.CheckAvailabilityButton.configure(highlightcolor="black")
         self.CheckAvailabilityButton.configure(pady="0")
         self.CheckAvailabilityButton.configure(text='''Check availability''')
-        self.CheckAvailabilityButton.bind('<Button-1>',lambda e:klambi_support.checkAvailability(e, self.AvailabilityPage, self.AvailableLotsByParkingList,self.TotalLots2, self.EmptyLots2, self.BookedLots2, self.__ctrl_Parcari))
+        self.CheckAvailabilityButton.bind('<Button-1>',
+                                          lambda e: klambi_support.checkAvailability(e, self.AvailabilityPage,
+                                                                                     self.TotalLots2, self.EmptyLots2,
+                                                                                     self.BookedLots2,
+                                                                                     self.__ctrl_Parcari, self.tree2, self.container_canvas2))
 
         self.RoleLabel3 = tk.Label(self.UserMainPage)
         self.RoleLabel3.place(relx=0.158, rely=0.41, height=26, width=60)
@@ -750,6 +792,42 @@ class Toplevel1:
         self.EmptyLotsLabel.configure(text='''empty lots''')
         self.EmptyLotsLabel.configure(width=132)
 
+        self.container_canvas4 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas4.place(relx=0.55, rely=0.288
+                                    , relheight=0.550,
+                                    relwidth=0.380)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas4.configure(background="#d9d9d9")
+        self.container_canvas4.configure(borderwidth="2")
+        self.container_canvas4.configure(highlightbackground="#d9d9d9")
+        self.container_canvas4.configure(highlightcolor="black")
+        self.container_canvas4.configure(insertbackground="black")
+        self.container_canvas4.configure(relief='ridge')
+        self.container_canvas4.configure(selectbackground="#c4c4c4")
+        self.container_canvas4.configure(selectforeground="black")
+
+        container4 = ttk.Frame(self.container_canvas4)  # definim container-ul listei !!! neaparat frame
+
+        container4.pack(fill='both', expand=True)
+
+        list_header = ['ID', 'Adress', 'Available Lots']  # lista de capete de talel
+
+        self.tree4 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree4.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree4.xview)
+        self.tree4.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree4.grid(column=0, row=0, sticky='nsew', in_=container4)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container4)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container4)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container4.grid_columnconfigure(0, weight=1)
+        container4.grid_rowconfigure(0, weight=1)
+
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree4.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree4, c, 0))
+            # adjust the column's width to the header string
+            self.tree4.column(col, width=tkFont.Font().measure(col.title()))
+
         self.BookingListLabel = tk.Label(self.ParkingDetailsPage)
         self.BookingListLabel.place(relx=0.498, rely=0.151, height=43, width=212)
 
@@ -763,18 +841,18 @@ class Toplevel1:
         self.BookingListLabel.configure(highlightcolor="black")
         self.BookingListLabel.configure(text='''Bookings:''')
 
-        self.ParkingDetailsList = tk.Listbox(self.ParkingDetailsPage)
-        self.ParkingDetailsList.place(relx=0.431, rely=0.259, relheight=0.631
-                , relwidth=0.488)
-        self.ParkingDetailsList.configure(background="white")
-        self.ParkingDetailsList.configure(disabledforeground="#a3a3a3")
-        self.ParkingDetailsList.configure(font="TkFixedFont")
-        self.ParkingDetailsList.configure(foreground="#000000")
-        self.ParkingDetailsList.configure(highlightbackground="#d9d9d9")
-        self.ParkingDetailsList.configure(highlightcolor="black")
-        self.ParkingDetailsList.configure(selectbackground="#c4c4c4")
-        self.ParkingDetailsList.configure(selectforeground="black")
-        self.ParkingDetailsList.configure(width=294)
+        # self.ParkingDetailsList = tk.Listbox(self.ParkingDetailsPage)
+        # self.ParkingDetailsList.place(relx=0.431, rely=0.259, relheight=0.631
+        #         , relwidth=0.488)
+        # self.ParkingDetailsList.configure(background="white")
+        # self.ParkingDetailsList.configure(disabledforeground="#a3a3a3")
+        # self.ParkingDetailsList.configure(font="TkFixedFont")
+        # self.ParkingDetailsList.configure(foreground="#000000")
+        # self.ParkingDetailsList.configure(highlightbackground="#d9d9d9")
+        # self.ParkingDetailsList.configure(highlightcolor="black")
+        # self.ParkingDetailsList.configure(selectbackground="#c4c4c4")
+        # self.ParkingDetailsList.configure(selectforeground="black")
+        # self.ParkingDetailsList.configure(width=294)
 
         self.ProfitDetailsPage = tk.Canvas(top)
         self.ProfitDetailsPage.place(relx=0.326, rely=0.073, relheight=0.843
@@ -914,6 +992,7 @@ class Toplevel1:
         self.ProfitDetailsList.configure(selectforeground="black")
         self.ProfitDetailsList.configure(width=244)
 
+
         self.AvailabilityPage = tk.Canvas(top)
         self.AvailabilityPage.place(relx=0.326, rely=0.073, relheight=0.843
                 , relwidth=0.613)
@@ -1031,6 +1110,42 @@ class Toplevel1:
         self.EmptyLotsLabel2.configure(text='''empty lots''')
         self.EmptyLotsLabel2.configure(width=142)
 
+        self.container_canvas2 = tk.Canvas(top)  # definim un canvas nou, care contine container-ul listei
+        self.container_canvas2.place(relx=0.55, rely=0.288
+                                    , relheight=0.550,
+                                    relwidth=0.380)  # relx e pozitia pe axa x, rely e pozitia pe axa y, si avem inaltimea si latimea
+        self.container_canvas2.configure(background="#d9d9d9")
+        self.container_canvas2.configure(borderwidth="2")
+        self.container_canvas2.configure(highlightbackground="#d9d9d9")
+        self.container_canvas2.configure(highlightcolor="black")
+        self.container_canvas2.configure(insertbackground="black")
+        self.container_canvas2.configure(relief='ridge')
+        self.container_canvas2.configure(selectbackground="#c4c4c4")
+        self.container_canvas2.configure(selectforeground="black")
+
+        container2 = ttk.Frame(self.container_canvas2)  # definim container-ul listei !!! neaparat frame
+
+        container2.pack(fill='both', expand=True)
+
+        list_header = ['ID', 'Adress', 'Available Lots']  # lista de capete de talel
+
+        self.tree2 = ttk.Treeview(columns=list_header, show="headings")  # definim un treeview, cu heading-uri
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree2.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree2.xview)
+        self.tree2.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree2.grid(column=0, row=0, sticky='nsew', in_=container2)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container2)
+        hsb.grid(column=0, row=1, sticky='ew',
+                 in_=container2)  # ultimele 6 randuri sunt ca sa avem bara de scroll si pe axa x si pe axa y
+        container2.grid_columnconfigure(0, weight=1)
+        container2.grid_rowconfigure(0, weight=1)
+
+        for col in list_header:
+            # definim fiecare cap de coloana si asignam functia de sortare pe fiecare
+            self.tree2.heading(col, text=col.title(), command=lambda c=col: klambi_support.sortby(self.tree2, c, 0))
+            # adjust the column's width to the header string
+            self.tree2.column(col, width=tkFont.Font().measure(col.title()))
+
         self.AvailableLotsLabel = tk.Label(self.AvailabilityPage)
         self.AvailableLotsLabel.place(relx=0.415, rely=0.151, height=43
                 , width=322)
@@ -1045,18 +1160,18 @@ class Toplevel1:
         self.AvailableLotsLabel.configure(text='''Available lots by parking''')
         self.AvailableLotsLabel.configure(width=322)
 
-        self.AvailableLotsByParkingList = tk.Listbox(self.AvailabilityPage)
-        self.AvailableLotsByParkingList.place(relx=0.431, rely=0.259
-                , relheight=0.631, relwidth=0.504)
-        self.AvailableLotsByParkingList.configure(background="white")
-        self.AvailableLotsByParkingList.configure(disabledforeground="#a3a3a3")
-        self.AvailableLotsByParkingList.configure(font="TkFixedFont")
-        self.AvailableLotsByParkingList.configure(foreground="#000000")
-        self.AvailableLotsByParkingList.configure(highlightbackground="#d9d9d9")
-        self.AvailableLotsByParkingList.configure(highlightcolor="black")
-        self.AvailableLotsByParkingList.configure(selectbackground="#c4c4c4")
-        self.AvailableLotsByParkingList.configure(selectforeground="black")
-        self.AvailableLotsByParkingList.configure(width=304)
+        # self.AvailableLotsByParkingList = tk.Listbox(self.AvailabilityPage)
+        # self.AvailableLotsByParkingList.place(relx=0.431, rely=0.259
+        #         , relheight=0.631, relwidth=0.504)
+        # self.AvailableLotsByParkingList.configure(background="white")
+        # self.AvailableLotsByParkingList.configure(disabledforeground="#a3a3a3")
+        # self.AvailableLotsByParkingList.configure(font="TkFixedFont")
+        # self.AvailableLotsByParkingList.configure(foreground="#000000")
+        # self.AvailableLotsByParkingList.configure(highlightbackground="#d9d9d9")
+        # self.AvailableLotsByParkingList.configure(highlightcolor="black")
+        # self.AvailableLotsByParkingList.configure(selectbackground="#c4c4c4")
+        # self.AvailableLotsByParkingList.configure(selectforeground="black")
+        # self.AvailableLotsByParkingList.configure(width=304)
 
         self.ReservationPage = tk.Canvas(top)
         self.ReservationPage.place(relx=0.326, rely=0.073, relheight=0.843
@@ -1374,7 +1489,7 @@ while fast charging reservations are only 1 hour.''')
         self.SelectDateButtonAdmin.configure(highlightcolor="black")
         self.SelectDateButtonAdmin.configure(pady="0")
         self.SelectDateButtonAdmin.configure(text='''Select''')
-        self.SelectDateButtonAdmin.bind('<Button-1>',lambda e:klambi_support.selectAdminDate(e, self.ParkingDetailsPage, self.YearInputAdmin, self.MonthInputAdmin, self.DayInputAdmin, self.HourInputAdmin, self.__ctrl_Parcari, self.__ctrl_Programari, self.TotalLots,self.EmptyLots,self.BookedLots, self.ParkingDetailsList))
+        self.SelectDateButtonAdmin.bind('<Button-1>',lambda e:klambi_support.selectAdminDate(e, self.ParkingDetailsPage, self.YearInputAdmin, self.MonthInputAdmin, self.DayInputAdmin, self.HourInputAdmin, self.__ctrl_Parcari, self.__ctrl_Programari, self.TotalLots,self.EmptyLots,self.BookedLots, self.tree4, self.container_canvas4))
 
         self.HourLabelAdmin = tk.Label(self.SelectDateAdminPage)
         self.HourLabelAdmin.place(relx=0.313, rely=0.402, height=35, width=128)

@@ -1,5 +1,5 @@
-from klambicarz.Model.Parcare_Model import Parcare_Model
-from klambicarz.Validator import Parcare_Validator
+from Model.Parcare_Model import Parcare_Model
+from Validator import Parcare_Validator
 class Parcari_Controller(object):
     def __init__(self):
         self.__parcare_model=Parcare_Model()
@@ -17,6 +17,7 @@ class Parcari_Controller(object):
             return True
 
     def getParcariWithCapacitiesAndOccupied(self):
+        print("am ajuns aici la afisare")
         results=self.__parcare_model.getParcariWithCapacitiesAndOccupied()
         return results
 

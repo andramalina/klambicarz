@@ -6,6 +6,7 @@
 #    May 02, 2019 11:46:24 PM EEST  platform: Windows NT
 
 import sys
+import datetime
 from tkinter import messagebox
 from tkinter import *
 try:
@@ -34,37 +35,6 @@ def backToUserMainPage(p1, canvas1, canvas2):
     print('p1 = {0}'.format(p1))
     tk.Misc.lift(canvas1)
     tk.Misc.lift(canvas2)
-    sys.stdout.flush()
-
-def changePakingStatus(p1, canvas1, canvas2, entryId, entryNewStatus,ctrl_Parcari,ctrl_Programari):
-    print('klambi_support.changePakingStatus')
-    print('p1 = {0}'.format(p1))
-    val=0
-    if(entryNewStatus.get()=="inchis"):
-        val=0
-    elif(entryNewStatus.get()=="deschis"):
-        val=1
-    else:
-        messagebox.showinfo("Error","Va rugam introduceti inchis/deschis pentru status!")
-
-
-    if(ctrl_Parcari.findParcare(entryId.get())==False):
-        messagebox.showinfo("Error","Id inexistent!")
-    elif(val==1 or val==0):
-        ctrl_Parcari.updateStatus(val,entryId.get())
-        if(val==0):
-            ctrl_Programari.deleteProgramariByParcareAndAfterSysdate(entryId.get())
-
-    tk.Misc.lift(canvas1)
-    tk.Misc.lift(canvas2)
-    sys.stdout.flush()
-
-def checkAvailability(p1, canvas, list, totalLotsLabel,availableLotsLabel,bookedLotsLabel, ctrl_Parcari):
-    print('klambi_support.checkAvailability')
-    print('p1 = {0}'.format(p1))
-    set_list_ParcariCapacitiesOccupied(list,ctrl_Parcari)
-    set_labels_TotalAvailableBooked(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_Parcari)
-    tk.Misc.lift(canvas)
     sys.stdout.flush()
 
 def checkParkings(p1, canvas):
@@ -119,13 +89,6 @@ def logout(p1, canvas1, canvas2):
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
-def manageParking(p1, canvas, parkingsList, ctrl_Parcari):
-    print('klambi_support.manageParking')
-    print('p1 = {0}'.format(p1))
-    tk.Misc.lift(canvas)
-    set_list_ParcariUpdateList(parkingsList,ctrl_Parcari)
-    sys.stdout.flush()
-
 def newReservation(p1, canvas):
     print('klambi_support.newReservation')
     print('p1 = {0}'.format(p1))
@@ -153,7 +116,7 @@ def profitByWeek(p1,profitDetailsList, ctrl_Programari,label):
     label.configure(text='week')
     sys.stdout.flush()
 
-def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, hourInputAdmin, ctrl_Parcari, ctrl_Programari, totalLots,availableLots,emptyLots, parkingDetailsList):
+def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, hourInputAdmin, ctrl_Parcari, ctrl_Programari, totalLots,availableLots,emptyLots, list,container):
     print('klambi_support.selectAdminDate')
     print('p1 = {0}'.format(p1))
 
@@ -162,11 +125,13 @@ def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, 
         set_labels_TotalAvailableBookedForSpecificDate(totalLots, availableLots, emptyLots, ctrl_Parcari,
                                                        yearInputAdmin.get(), monthInputAdmin.get(), dayInputAdmin.get(),
                                                        hourInputAdmin.get())
-        set_list_ReservationListSpecificDate(yearInputAdmin.get(),monthInputAdmin.get(),dayInputAdmin.get(),hourInputAdmin.get(),ctrl_Programari,parkingDetailsList)
+        set_list_ReservationListSpecificDate(list,yearInputAdmin.get(),monthInputAdmin.get(),dayInputAdmin.get(),hourInputAdmin.get(),ctrl_Programari,container)
     else:
         set_labels_TotalAvailableBookedForToday(totalLots, availableLots, emptyLots, ctrl_Parcari,hourInputAdmin.get())
-        set_list_ReservationListToday(hourInputAdmin.get(),ctrl_Programari,parkingDetailsList)
+        set_list_ReservationListToday(list,hourInputAdmin.get(),ctrl_Programari,container)
     tk.Misc.lift(canvas)
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
     sys.stdout.flush()
 
 def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list, container):
@@ -177,6 +142,51 @@ def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hour
     tk.Misc.lift(canvas)
     tk.Misc.lift(container)
     tk.Misc.lift(list)
+    sys.stdout.flush()
+
+def checkAvailability(p1, canvas, totalLotsLabel,availableLotsLabel,bookedLotsLabel, ctrl_Parcari, list, container):
+    print('klambi_support.checkAvailability')
+    print('p1 = {0}'.format(p1))
+    set_list_ParcariCapacitiesOccupied(list,ctrl_Parcari,container)
+    set_labels_TotalAvailableBooked(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_Parcari)
+    tk.Misc.lift(canvas)
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
+    sys.stdout.flush()
+
+
+def manageParking(p1, canvas, ctrl_Parcari,list,container):
+    print('klambi_support.manageParking')
+    print('p1 = {0}'.format(p1))
+    tk.Misc.lift(canvas)
+    set_list_ParcariUpdateList(list,ctrl_Parcari,container)
+    sys.stdout.flush()
+    tk.Misc.lift(canvas)
+    tk.Misc.lift(container)
+    tk.Misc.lift(list)
+    sys.stdout.flush()
+
+def changePakingStatus(p1, canvas1, canvas2, entryId, entryNewStatus,ctrl_Parcari,ctrl_Programari):
+    print('klambi_support.changePakingStatus')
+    print('p1 = {0}'.format(p1))
+    val=0
+    if(entryNewStatus.get()=="inchis"):
+        val=0
+    elif(entryNewStatus.get()=="deschis"):
+        val=1
+    else:
+        messagebox.showinfo("Error","Va rugam introduceti inchis/deschis pentru status!")
+
+
+    if(ctrl_Parcari.findParcare(entryId.get())==False):
+        messagebox.showinfo("Error","Id inexistent!")
+    elif(val==1 or val==0):
+        ctrl_Parcari.updateStatus(val,entryId.get())
+        if(val==0):
+            ctrl_Programari.deleteProgramariByParcareAndAfterSysdate(entryId.get())
+
+    tk.Misc.lift(canvas1)
+    tk.Misc.lift(canvas2)
     sys.stdout.flush()
 
 def viewProfit(p1, canvas):
@@ -197,21 +207,48 @@ def destroy_window():
     top_level.destroy()
     top_level = None
 
-def set_list_ParcariCapacitiesOccupied(list, ctrl_Parcari):
-    list.delete(0, END)
-    for row in ctrl_Parcari.getParcariWithCapacitiesAndOccupied():
-        list.insert(END, row)
-
 def set_labels_TotalAvailableBooked(totalLotsLabel,availableLotsLabel,bookedLotsLabel,ctrl_parcari):
     results=ctrl_parcari.getTotalCapacityBookedAvailable()
     totalLotsLabel.configure(text=results[0])
     availableLotsLabel.configure(text=results[1])
     bookedLotsLabel.configure(text=results[2])
 
-def set_list_ParcariUpdateList(list,ctrl_Parcari):
-    list.delete(0, END)
+def set_list_ParcariUpdateList(list,ctrl_Parcari,container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['ID', 'Adress', 'Status']  # copia fidela a listei de capete de tabel
     for row in ctrl_Parcari.getAllParcariIdLocatie():
-        list.insert(END, row)
+        new_row=[]
+        new_row.append(row[0])
+        new_row.append(row[1])
+        if(row[2]==1):
+            new_row.append('deschis')
+        else:
+            new_row.append('inchis')
+        list_to_add.append(new_row)
+
+
+    for item in list_to_add:  #pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)     #adaugam in obiectul de tip tree
+        list.column(list_header[0], width=30)
+        list.column(list_header[1], width=180)
+        list.column(list_header[2], width=100)
+    tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
+
+def set_list_ParcariCapacitiesOccupied(list, ctrl_Parcari,container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['ID', 'Adress', 'Available Lots']  # copia fidela a listei de capete de tabel
+    for row in ctrl_Parcari.getParcariWithCapacitiesAndOccupied():
+        list_to_add.append(row)
+    for item in list_to_add:    #pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)     #adaugam in obiectul de tip tree
+        list.column(list_header[0], width=50)
+        list.column(list_header[1], width=200)
+        list.column(list_header[2], width=100)
+    tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
 
 def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,day,hour, container):
     list.delete(*list.get_children()) #golim lista initial, sa nu se intample ce zicea Andra
@@ -229,9 +266,35 @@ def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,da
         list.column(list_header[0], width=50)
         list.column(list_header[1], width=155)
         list.column(list_header[2], width=50)
-
-
     tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
+
+def set_list_ReservationListSpecificDate(list, year,month,day,hour,ctrl_Programari,container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['ID', 'Adress', 'Available Lots']  # copia fidela a listei de capete de tabel
+    for row in ctrl_Programari.getReservationsSpecificDate(year,month,day,hour):
+        list_to_add.append(row)
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
+    list.column(list_header[0], width=50)
+    list.column(list_header[1], width=200)
+    list.column(list_header[2], width=100)
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
+    sys.stdout.flush()
+
+def set_list_ReservationListToday(list, hour,ctrl_Programari,container):
+    list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
+    list_to_add = []  # definim o lista goala unde adaugam obiectele pe care vrem sa le afisam
+    list_header = ['ID', 'Adress', 'Available Lots']  # copia fidela a listei de capete de tabel
+    for row in ctrl_Programari.getReservationsToday(hour):
+        list_to_add.append(row)
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
+    list.column(list_header[0], width=50)
+    list.column(list_header[1], width=200)
+    list.column(list_header[2], width=100)
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
     sys.stdout.flush()
 
 def sortby(tree, col, descending):
@@ -278,13 +341,3 @@ def set_labels_TotalAvailableBookedForToday(totalLotsLabel,availableLotsLabel,bo
     availableLotsLabel.configure(text=results[1])
     bookedLotsLabel.configure(text=results[2])
 
-def set_list_ReservationListSpecificDate(year,month,day,hour,ctrl_Programari,list):
-    list.delete(0, END)
-    for row in ctrl_Programari.getReservationsSpecificDate(year,month,day,hour):
-        list.insert(END, row)
-
-def set_list_ReservationListToday(hour,ctrl_Programari,list):
-    list.delete(0, END)
-    print("GOTHCAAAA")
-    for row in ctrl_Programari.getReservationsToday(hour):
-        list.insert(END, row)
