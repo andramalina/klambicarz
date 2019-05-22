@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8f222be-419e-4270-8c75-ea65eafa76bb" name="Default Changelist" comment="">
+    <list default="true" id="771c5455-25cd-4f0e-9c71-2e8d1b8deee2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/klambicarz.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Masini_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Masini_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Basic_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Basic_Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Masina_Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Masina_Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/klambi.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/klambi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/klambi_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/klambi_support.py" afterDir="false" />
     </list>
@@ -12,76 +21,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/klambicarz$klambi.coverage" NAME="klambi Coverage Results" MODIFIED="1557331511360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/View" />
-    <SUITE FILE_PATH="coverage/klambicarz$start_app.coverage" NAME="start_app Coverage Results" MODIFIED="1558467236395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="klambicarz" />
+    <SUITE FILE_PATH="coverage/klambicarzz$start_app.coverage" NAME="start_app Coverage Results" MODIFIED="1558513944579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/klambi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="987" column="90" selection-start-line="987" selection-start-column="23" selection-end-line="987" selection-end-column="90" />
-              <folding>
-                <element signature="e#191#201#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/connection_cext.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="397" selection-start-line="397" selection-end-line="397" />
-              <folding>
-                <element signature="e#1559#1579#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/cursor_cext.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="265" selection-start-line="265" selection-end-line="265" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/Ui.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/Programari_Controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/Parcari_Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="255">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -89,32 +37,52 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Parcare_Model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="44" column="50" lean-forward="true" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/klambi_support.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="356" column="86" selection-start-line="356" selection-start-column="86" selection-end-line="356" selection-end-column="86" />
-              <folding>
-                <element signature="e#195#205#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="366">
+              <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Programare_Model.py">
+        <entry file="file://$PROJECT_DIR$/Controller/Programari_Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
+            <state relative-caret-position="187">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Validator/Masina_Validator.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Masina.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="48" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/Masini_Controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Parcare_Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -123,89 +91,70 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/ttk.py">
+        <entry file="file://$PROJECT_DIR$/Model/Masina_Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1245" selection-start-line="1245" selection-end-line="1245" />
+            <state relative-caret-position="289">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/Users_Controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/klambi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="1815" lean-forward="true" selection-start-line="1815" selection-end-line="1815" />
+              <folding>
+                <element signature="e#191#201#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Avai</find>
-      <find>'Adr</find>
-      <find>'Ad</find>
-      <find>Change</find>
-      <find>mana</find>
-      <find>'I</find>
-      <find>'boo</find>
-      <find>canvas2</find>
-      <find>'Booki</find>
-      <find>'Av</find>
-      <find>'Avai</find>
-      <find>newR</find>
-      <find>selectA</find>
-      <find>selectAd</find>
-      <find>'Bo</find>
-      <find>'Pro</find>
-      <find>check</find>
-      <find>Ava</find>
-      <find>pro</find>
-      <find>profi</find>
-      <find>Listbo</find>
-      <find>'Boo</find>
-      <find>set_list_ReservationListSpecificDate</find>
-      <find>Adre</find>
-      <find>manage</find>
-      <find>tree3</find>
-      <find>set_list_ParcariUpdateList</find>
-      <find>ShowingProfitLabel</find>
-      <find>set_list_ProfitListByDay</find>
-      <find>prof</find>
+      <find>confirm</find>
+      <find>self.__ctrl_Parcari</find>
+      <find>if all</find>
+      <find>ParcariAvailableLotsOnSpecificDate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
-    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Parcare.py" />
-        <option value="$PROJECT_DIR$/appRun.py" />
-        <option value="$PROJECT_DIR$/Model/Basic_Model.py" />
         <option value="$PROJECT_DIR$/start_app.py" />
         <option value="$PROJECT_DIR$/Controller/Users_Controller.py" />
-        <option value="$PROJECT_DIR$/Controller/Programari_Controller.py" />
         <option value="$PROJECT_DIR$/Controller/Parcari_Controller.py" />
-        <option value="$PROJECT_DIR$/Model/Parcare_Model.py" />
-        <option value="$PROJECT_DIR$/Model/Programare_Model.py" />
+        <option value="$PROJECT_DIR$/Controller/Programari_Controller.py" />
+        <option value="$PROJECT_DIR$/Model/Basic_Model.py" />
+        <option value="$PROJECT_DIR$/Model/Masina_Model.py" />
+        <option value="$PROJECT_DIR$/Controller/Masini_Controller.py" />
         <option value="$PROJECT_DIR$/View/klambi.py" />
         <option value="$PROJECT_DIR$/View/klambi_support.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="210" />
-    <option name="y" value="23" />
-    <option name="width" value="1230" />
-    <option name="height" value="809" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="374" />
+    <option name="y" value="245" />
+    <option name="width" value="867" />
+    <option name="height" value="788" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -216,27 +165,27 @@
         <subPane>
           <expand>
             <path>
-              <item name="klambicarz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klambicarz" type="462c0819:PsiDirectoryNode" />
+              <item name="klambicarzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klambicarzz" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="klambicarz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klambicarz" type="462c0819:PsiDirectoryNode" />
+              <item name="klambicarzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klambicarzz" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="klambicarz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klambicarz" type="462c0819:PsiDirectoryNode" />
+              <item name="klambicarzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klambicarzz" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="klambicarz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klambicarz" type="462c0819:PsiDirectoryNode" />
+              <item name="klambicarzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klambicarzz" type="462c0819:PsiDirectoryNode" />
               <item name="Validator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="klambicarz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klambicarz" type="462c0819:PsiDirectoryNode" />
+              <item name="klambicarzz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klambicarzz" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -247,7 +196,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../iss" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -263,37 +215,15 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="klambicarz" />
+      <module name="klambicarzz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python3.7" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="start_app" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="klambicarz" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python3.7" />
+      <option name="SDK_HOME" value="C:\Users\andra\AppData\Local\Programs\Python\Python37\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -306,333 +236,373 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.start_app" />
-      </list>
-    </recent_temporary>
+    <configuration name="start_app" type="PythonConfigurationType" factoryName="Python">
+      <module name="klambicarz" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\andra\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b8f222be-419e-4270-8c75-ea65eafa76bb" name="Default Changelist" comment="" />
-      <created>1553851912523</created>
+      <changelist id="771c5455-25cd-4f0e-9c71-2e8d1b8deee2" name="Default Changelist" comment="" />
+      <created>1555515446616</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1553851912523</updated>
-      <workItem from="1553851913848" duration="3400000" />
-      <workItem from="1554303988814" duration="1320000" />
-      <workItem from="1556025741567" duration="26000" />
-      <workItem from="1556025770633" duration="3000" />
-      <workItem from="1556025784523" duration="297000" />
-      <workItem from="1557139883834" duration="415000" />
-      <workItem from="1557140412993" duration="127000" />
-      <workItem from="1557140625867" duration="2789000" />
-      <workItem from="1557144730936" duration="530000" />
-      <workItem from="1557145344317" duration="2901000" />
-      <workItem from="1557149584978" duration="3505000" />
-      <workItem from="1557331441932" duration="12774000" />
-      <workItem from="1558433181656" duration="22104000" />
+      <updated>1555515446616</updated>
+      <workItem from="1555515448757" duration="906000" />
+      <workItem from="1557329014089" duration="2641000" />
+      <workItem from="1558176802527" duration="3010000" />
+      <workItem from="1558207808662" duration="3491000" />
+      <workItem from="1558382823254" duration="2118000" />
+      <workItem from="1558471429058" duration="7833000" />
+      <workItem from="1558510575907" duration="3332000" />
     </task>
-    <task id="LOCAL-00001" summary="pt verificare in start_app mai adaugati asta&#10;am pus asta ca sa nu existe conflicte&#10;am folosit basic_model dar nu l-am mai adaugat ca il aveti de la Andra&#10;&#10;#!/usr/bin/python&#10;from Model.Basic_Model import *&#10;from Model.Parcare_Model import *&#10;from Parcare import *&#10;parcareModel=Parcare_Model()&#10;parcareModel.viewAllParcari()&#10;parcareModel.updateStatus(0,1)&#10;parcare=Parcare(3,&quot;Polivalenta, nr. 5&quot;,1,50)&#10;parcareModel.insertParcare(parcare)">
-      <created>1553855367191</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1553855367191</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50191000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="23331000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="210" y="23" width="1230" height="809" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24074075" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24943481" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32931423" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17019667" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32914925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.099836335" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32914925" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32217574" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.31799164" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32914925" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21060605" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32914925" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32914925" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32217574" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.31799164" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32914925" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="pt verificare in start_app mai adaugati asta&#10;am pus asta ca sa nu existe conflicte&#10;am folosit basic_model dar nu l-am mai adaugat ca il aveti de la Andra&#10;&#10;#!/usr/bin/python&#10;from Model.Basic_Model import *&#10;from Model.Parcare_Model import *&#10;from Parcare import *&#10;parcareModel=Parcare_Model()&#10;parcareModel.viewAllParcari()&#10;parcareModel.updateStatus(0,1)&#10;parcare=Parcare(3,&quot;Polivalenta, nr. 5&quot;,1,50)&#10;parcareModel.insertParcare(parcare)" />
-    <option name="LAST_COMMIT_MESSAGE" value="pt verificare in start_app mai adaugati asta&#10;am pus asta ca sa nu existe conflicte&#10;am folosit basic_model dar nu l-am mai adaugat ca il aveti de la Andra&#10;&#10;#!/usr/bin/python&#10;from Model.Basic_Model import *&#10;from Model.Parcare_Model import *&#10;from Parcare import *&#10;parcareModel=Parcare_Model()&#10;parcareModel.viewAllParcari()&#10;parcareModel.updateStatus(0,1)&#10;parcare=Parcare(3,&quot;Polivalenta, nr. 5&quot;,1,50)&#10;parcareModel.insertParcare(parcare)" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/authentication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="190" selection-start-line="190" selection-end-line="190" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-514">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Parcare.py" />
-    <entry file="file://$PROJECT_DIR$/User.py" />
-    <entry file="file://$PROJECT_DIR$/Validator/User_Validator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/User_Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appRun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start_app.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Masina_Model.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validator/Masina_Validator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validator/Parcare_Validator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Programare.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validator/Programare_Validator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Basic_Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Masina.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Parcare.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/klambi.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Masini_Controller.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Users_Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Parcari_Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Parcare_Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="44" column="50" lean-forward="true" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Ui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/connection_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="397" selection-start-line="397" selection-end-line="397" />
-          <folding>
-            <element signature="e#1559#1579#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/mysql/connector/cursor_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="265" selection-start-line="265" selection-end-line="265" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Programari_Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Programare_Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tkinter/ttk.py">
+    <entry file="uml://Python/#C:/Users/andra/PycharmProjects/klambicarzz">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#C:/Users/andra/PycharmProjects/klambicarzz</OriginalElement>
+          <nodes>
+            <node x="2634.5723684210525" y="1804.0">Controller.Users_Controller.Users_Controller</node>
+            <node x="4962.5723684210525" y="1771.0">View.Ui.Ui</node>
+            <node x="3743.5723684210525" y="1738.0">Controller.Programari_Controller.Programari_Controller</node>
+            <node x="1598.5723684210525" y="1848.5">Validator.User_Validator.User_Validator</node>
+            <node x="116.5" y="3348.0">Exception</node>
+            <node x="2543.25" y="0.0">object</node>
+            <node x="1229.5" y="3326.0">Model.Masina_Model.Masina_Model</node>
+            <node x="44.0" y="3560.0">Model.Basic_Model.Model_Exception</node>
+            <node x="746.5" y="3216.0">Model.Parcare_Model.Parcare_Model</node>
+            <node x="1263.5723684210525" y="1716.0">Model.Parcare.Parcare</node>
+            <node x="3030.5723684210525" y="1617.0">Model.Programare.Programare</node>
+            <node x="1853.5723684210525" y="1727.0">Controller.Parcari_Controller.Parcari_Controller</node>
+            <node x="0.0" y="1793.0">BaseException</node>
+            <node x="2336.5723684210525" y="1782.0">Model.Masina.Masina</node>
+            <node x="1475.5" y="3304.0">Model.User_Model.User_Model</node>
+            <node x="219.5" y="3238.0">Model.Programare_Model.Programare_Model</node>
+            <node x="1039.5723684210525" y="1826.0">Model.Basic_Model.Basic_Model</node>
+            <node x="4306.5723684210525" y="583.0">View.klambi.Toplevel1</node>
+            <node x="4552.5723684210525" y="1650.0">Model.User.User</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="Exception" target="BaseException">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="81.5" />
+            </edge>
+            <edge source="Controller.Users_Controller.Users_Controller" target="object">
+              <point x="0.0" y="-70.5" />
+              <point x="2822.5723684210525" y="563.0" />
+              <point x="2678.125" y="563.0" />
+              <point x="10.375" y="246.5" />
+            </edge>
+            <edge source="Model.Parcare_Model.Parcare_Model" target="Model.Basic_Model.Basic_Model">
+              <point x="0.0" y="-147.0" />
+              <point x="978.0" y="3196.0" />
+              <point x="1116.0723684210525" y="3196.0" />
+              <point x="-25.5" y="48.5" />
+            </edge>
+            <edge source="Model.Parcare.Parcare" target="object">
+              <point x="0.0" y="-158.5" />
+              <point x="1421.0723684210525" y="533.0" />
+              <point x="2595.125" y="533.0" />
+              <point x="-72.625" y="246.5" />
+            </edge>
+            <edge source="Model.User_Model.User_Model" target="Model.Basic_Model.Basic_Model">
+              <point x="0.0" y="-59.0" />
+              <point x="1597.5" y="3186.0" />
+              <point x="1218.0723684210525" y="3186.0" />
+              <point x="76.5" y="48.5" />
+            </edge>
+            <edge source="Model.Basic_Model.Model_Exception" target="Exception">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="Controller.Parcari_Controller.Parcari_Controller" target="object">
+              <point x="0.0" y="-147.5" />
+              <point x="2085.0723684210525" y="553.0" />
+              <point x="2636.625" y="553.0" />
+              <point x="-31.125" y="246.5" />
+            </edge>
+            <edge source="Model.Masina.Masina" target="object">
+              <point x="0.0" y="-92.5" />
+              <point x="2475.5723684210525" y="563.0" />
+              <point x="2657.375" y="563.0" />
+              <point x="-10.375" y="246.5" />
+            </edge>
+            <edge source="Controller.Programari_Controller.Programari_Controller" target="object">
+              <point x="0.0" y="-136.5" />
+              <point x="4015.0723684210525" y="543.0" />
+              <point x="2719.625" y="543.0" />
+              <point x="51.875" y="246.5" />
+            </edge>
+            <edge source="Model.Programare_Model.Programare_Model" target="Model.Basic_Model.Basic_Model">
+              <point x="0.0" y="-125.0" />
+              <point x="473.0" y="3186.0" />
+              <point x="1065.0723684210525" y="3186.0" />
+              <point x="-76.5" y="48.5" />
+            </edge>
+            <edge source="Model.Basic_Model.Basic_Model" target="object">
+              <point x="0.0" y="-48.5" />
+              <point x="1141.5723684210525" y="523.0" />
+              <point x="2574.375" y="523.0" />
+              <point x="-93.375" y="246.5" />
+            </edge>
+            <edge source="View.Ui.Ui" target="object">
+              <point x="0.0" y="-103.5" />
+              <point x="5064.0723684210525" y="513.0" />
+              <point x="2781.875" y="513.0" />
+              <point x="114.125" y="246.5" />
+            </edge>
+            <edge source="Validator.User_Validator.User_Validator" target="object">
+              <point x="0.0" y="-26.0" />
+              <point x="1716.0723684210525" y="543.0" />
+              <point x="2615.875" y="543.0" />
+              <point x="-51.875" y="246.5" />
+            </edge>
+            <edge source="Model.Masina_Model.Masina_Model" target="Model.Basic_Model.Basic_Model">
+              <point x="0.0" y="-37.0" />
+              <point x="1342.5" y="3196.0" />
+              <point x="1167.0723684210525" y="3196.0" />
+              <point x="25.5" y="48.5" />
+            </edge>
+            <edge source="BaseException" target="object">
+              <point x="0.0" y="-81.5" />
+              <point x="158.0" y="513.0" />
+              <point x="2553.625" y="513.0" />
+              <point x="-114.125" y="246.5" />
+            </edge>
+            <edge source="View.klambi.Toplevel1" target="object">
+              <point x="0.0" y="-1291.5" />
+              <point x="4419.5723684210525" y="533.0" />
+              <point x="2740.375" y="533.0" />
+              <point x="72.625" y="246.5" />
+            </edge>
+            <edge source="Model.User.User" target="object">
+              <point x="0.0" y="-224.5" />
+              <point x="4747.5723684210525" y="523.0" />
+              <point x="2761.125" y="523.0" />
+              <point x="93.375" y="246.5" />
+            </edge>
+            <edge source="Model.Programare.Programare" target="object">
+              <point x="0.0" y="-257.5" />
+              <point x="3377.0723684210525" y="553.0" />
+              <point x="2698.875" y="553.0" />
+              <point x="31.125" y="246.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.8980609418282547" x="2043.0" y="2932.0" />
+          <SelectedNodes>
+            <node>BaseException</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Fields</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/klambi.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1245" selection-start-line="1245" selection-end-line="1245" />
+        <state relative-caret-position="17">
+          <caret line="1" column="73" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Parcare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="62" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Programare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Programare_Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appRun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Ui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validator/Parcare_Validator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validator/Programare_Validator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validator/User_Validator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Basic_Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/Parcari_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/Programari_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validator/Masina_Validator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Masina.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="48" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/Masini_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Parcare_Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Masina_Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/Users_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/klambi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="987" column="90" selection-start-line="987" selection-start-column="23" selection-end-line="987" selection-end-column="90" />
+        <state relative-caret-position="212">
+          <caret line="1815" lean-forward="true" selection-start-line="1815" selection-end-line="1815" />
           <folding>
             <element signature="e#191#201#0" expanded="true" />
           </folding>
@@ -641,11 +611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/klambi_support.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="356" column="86" selection-start-line="356" selection-start-column="86" selection-end-line="356" selection-end-column="86" />
-          <folding>
-            <element signature="e#195#205#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="366">
+          <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="12" />
         </state>
       </provider>
     </entry>

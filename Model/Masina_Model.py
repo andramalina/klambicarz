@@ -12,3 +12,10 @@ class Masina_Model(Basic_Model):
         val = (id,)
         self.cursor.execute(select, id)
         self.db.commit()
+
+    def findMasina(self, nr_inmatriculare):
+        sql_select="select * from masina where nr_inmatriculare=%s"
+        val=(nr_inmatriculare,)
+        self.cursor.execute(sql_select,val)
+        records=self.cursor.fetchone()
+        return records

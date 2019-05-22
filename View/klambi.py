@@ -12,6 +12,7 @@ from PIL import Image, ImageTk
 from Controller.Users_Controller import Users_Controller
 from Controller.Parcari_Controller import Parcari_Controller
 from Controller.Programari_Controller import Programari_Controller
+from Controller.Masini_Controller import Masini_Controller
 
 try:
     import Tkinter as tk
@@ -76,6 +77,7 @@ class Toplevel1:
         self.__ctrl_Users=Users_Controller()
         self.__ctrl_Parcari=Parcari_Controller()
         self.__ctrl_Programari=Programari_Controller()
+        self.__ctrl_Masini = Masini_Controller()
 
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
@@ -1465,7 +1467,7 @@ while fast charging reservations are only 1 hour.''')
         self.ConfirmNewReservationButton.configure(highlightcolor="black")
         self.ConfirmNewReservationButton.configure(pady="0")
         self.ConfirmNewReservationButton.configure(text='''Confirm''')
-        self.ConfirmNewReservationButton.bind('<Button-1>',lambda e:klambi_support.confirmNewReservation(e, self.BackgroundImage, self.UserMainPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser, self.ParkingIDReservationInput, self.CarRegNoInput, self.fastChargingCheckBoxState, self.__ctrl_Programari))
+        self.ConfirmNewReservationButton.bind('<Button-1>',lambda e:klambi_support.confirmNewReservation(e, self.BackgroundImage, self.UserMainPage,self.YearInputUser ,self.MonthInputUser, self.DayInputUser, self.HourInputUser, self.ParkingIDReservationInput, self.CarRegNoInput, self.fastChargingCheckBoxState, self.__ctrl_Programari, self.__ctrl_Parcari, self.__ctrl_Masini))
 
         self.SelectDateAdminPage = tk.Canvas(top)
         self.SelectDateAdminPage.place(relx=0.427, rely=0.219, relheight=0.588
@@ -1634,8 +1636,8 @@ while fast charging reservations are only 1 hour.''')
         self.SelectDateInfoLabelAdmin.configure(foreground="#000000")
         self.SelectDateInfoLabelAdmin.configure(highlightbackground="#d9d9d9")
         self.SelectDateInfoLabelAdmin.configure(highlightcolor="black")
-        self.SelectDateInfoLabelAdmin.configure(text='''If all fields are empty, 
-current time/date will be selected''')
+        self.SelectDateInfoLabelAdmin.configure(text='''If all date fields are empty, 
+current date will be selected''')
 
         self.SelectDateUserPage = tk.Canvas(top)
         self.SelectDateUserPage.place(relx=0.427, rely=0.219, relheight=0.588
@@ -1805,8 +1807,8 @@ current time/date will be selected''')
         self.SelectDateInfoLabelUser.configure(foreground="#000000")
         self.SelectDateInfoLabelUser.configure(highlightbackground="#d9d9d9")
         self.SelectDateInfoLabelUser.configure(highlightcolor="black")
-        self.SelectDateInfoLabelUser.configure(text='''If all fields are empty, 
-current time/date will be selected''')
+        self.SelectDateInfoLabelUser.configure(text='''If all date fields are empty, 
+current date will be selected''')
 
         tk.Misc.lift(self.BackgroundImage)
         tk.Misc.lift(self.LoginPage)
