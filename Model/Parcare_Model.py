@@ -6,6 +6,7 @@ class Parcare_Model(Basic_Model):
         Basic_Model.__init__(self)
 
     def getAllParcari(self):
+        self.db.commit()
         sql_select = "select * from parcare"   #comanda care va fi apelata in baza de date
         self.cursor.execute(sql_select)     #aici se executa comanda
         records = self.cursor.fetchall()    #de aici va lua fiecare rand din interogare si il va printa
@@ -14,12 +15,14 @@ class Parcare_Model(Basic_Model):
 
 
     def getAllParcariIdLocatie(self):
+        self.db.commit()
         sql_select="select id_parcare,locatie,status from parcare"
         self.cursor.execute(sql_select)
         records=self.cursor.fetchall()
         return records
 
     def insertParcare(self, parcare):
+        self.db.commit()
         id_parcare=parcare.get_id_parcare()         #luam fiecare atribut al userului folosing getteri
         locatie=parcare.get_locatie()
         status=parcare.get_status()
@@ -30,12 +33,14 @@ class Parcare_Model(Basic_Model):
         self.db.commit()                                                #obiect din val)
 
     def updateStatus(self,status,id_parcare):
+        self.db.commit()
         sql_update="update parcare set status=%s where id_parcare=%s"
         val=(status,id_parcare)
         self.cursor.execute(sql_update,val)
         self.db.commit()
 
     def findParcare(self, id_parcare):
+        self.db.commit()
         sql_select="select * from parcare where id_parcare=%s"
         val=(id_parcare,)
         self.cursor.execute(sql_select,val)
@@ -44,6 +49,7 @@ class Parcare_Model(Basic_Model):
 
     def getParcariWithCapacitiesAndOccupied(self):
         #sql_select="select pro.id_parcare, par.locatie, par.capacitate, count(*), capacitate-count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) group by pro.id_parcare"
+        self.db.commit()
         sql_select="select pro.id_parcare, par.locatie, capacitate-count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) group by pro.id_parcare"
         self.cursor.execute(sql_select)
         records=self.cursor.fetchall()
@@ -71,6 +77,7 @@ class Parcare_Model(Basic_Model):
         return records
 
     def getTotalCapacityBookedAvailable(self):
+        self.db.commit()
         sql_select1="select count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate())"
         self.cursor.execute(sql_select1)
         records1 = self.cursor.fetchone()
@@ -85,6 +92,7 @@ class Parcare_Model(Basic_Model):
         return results
 
     def getTotalCapacityBookedAvailableForSpecificDate(self,year, month, day, hour):
+        self.db.commit()
         sql_select1 = "select count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(concat_ws('-',%s,%s,%s)) and pro.ora_sosire=time(concat_ws(':',%s,00,00))"
         val=(year,month,day,hour)
         self.cursor.execute(sql_select1,val)
@@ -100,6 +108,7 @@ class Parcare_Model(Basic_Model):
         return results
 
     def getTotalCapacityBookedAvailableForToday(self, hour):
+        self.db.commit()
         sql_select1 = "select count(*) from  programare pro inner join parcare par on(par.id_parcare=pro.id_parcare) where pro.data_programare=date(sysdate()) and pro.ora_sosire=time(concat_ws(':',%s,00,00))"
         val = (hour,)
         self.cursor.execute(sql_select1, val)

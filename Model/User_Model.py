@@ -6,6 +6,7 @@ class User_Model(Basic_Model):
         Basic_Model.__init__(self)
 
     def viewAllUsers(self):
+        self.db.commit()
         sql_select = "select * from user"   #comanda care va fi apelata in baza de date
         self.cursor.execute(sql_select)     #aici se executa comanda
         records = self.cursor.fetchall()    #de aici va lua fiecare rand din interogare si il va printa
@@ -15,6 +16,7 @@ class User_Model(Basic_Model):
 
 
     def insertUser(self, user):
+        self.db.commit()
         id_user=user.get_id_user()         #luam fiecare atribut al userului folosing getteri
         nume=user.get_nume()
         password=user.get_password()
@@ -28,6 +30,7 @@ class User_Model(Basic_Model):
         print("am insertat")
 
     def verify_user(self,username,password):
+        self.db.commit()
         print("yuhuu",username,password)
         sql_select="select tip from user where username=%s and password=%s"
         val=(username,password)
