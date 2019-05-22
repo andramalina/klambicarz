@@ -43,7 +43,7 @@ def checkParkings(p1, canvas):
     tk.Misc.lift(canvas)
     sys.stdout.flush()
 
-def confirmNewReservation(p1, canvas1, canvas2, yearInputUser ,monthInputUser, dayInputUser, hourInputUser, parkingIDReservationInput, carRegNoInput, fastChargingCheckboxState, ctrl_Programari):
+def confirmNewReservation(p1, canvas1, canvas2, yearInputUser ,monthInputUser, dayInputUser, hourInputUser, parkingIDReservationInput, carRegNoInput, fastChargingCheckboxState, ctrl_Programari, ctrl_Parcari, ctrl_Masini):
     print('klambi_support.confirmNewReservation')
     print('p1 = {0}'.format(p1))
     year=yearInputUser.get()
@@ -55,10 +55,15 @@ def confirmNewReservation(p1, canvas1, canvas2, yearInputUser ,monthInputUser, d
     fastStyle=fastChargingCheckboxState.get()
     print("iuhuu")
     print(fastStyle)
+    if (ctrl_Parcari.findParcare(parkingId)== False):
+        messagebox.showinfo("Error", "The id does not exist!")
+    if (ctrl_Masini.findMasina(carNo)== False):
+        messagebox.showinfo("Error", "The car number does not exist!")
     if(len(year)!=0 and len(month)!=0 and len(day)!=0):
         ctrl_Programari.addProgramareWithDay(parkingId,carNo,year,month,day,hour,fastStyle)
     else:
         ctrl_Programari.addProgramareToday(parkingId,hour,carNo,fastStyle)
+    messagebox.showinfo("Success", "Reservation successfully made!")
     tk.Misc.lift(canvas1)
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
@@ -125,12 +130,26 @@ def profitByWeek(p1, ctrl_Programari,label, list, container):
 def selectUserDate(p1, canvas, yearInputUser ,monthInputUser, dayInputUser, hourInputUser,ctrl_Parcari, list, container):
     print('klambi_support.selectUserDate')
     print('p1 = {0}'.format(p1))
-    set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get(), container)
+    if(len(yearInputUser.get())!=0 and len(monthInputUser.get())!=0 and len(dayInputUser.get())!=0):
+        try:
+            int(yearInputUser.get())
+            int(dayInputUser.get())
+            int(monthInputUser.get())
+        except ValueError:
+            messagebox.showinfo("Error", "Wrong date!")
+
+    try:
+        int(hourInputUser.get())
+    except ValueError:
+        messagebox.showinfo("Error", "Wrong hour!")
+    else:
+
+        set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,yearInputUser.get(),monthInputUser.get(),dayInputUser.get(),hourInputUser.get(), container)
     # ridicam intai canvasul, apoi container-ul listei, apoi lista - ordinea opusa fata de cum se vad pe ecran
-    tk.Misc.lift(canvas)
-    tk.Misc.lift(container)
-    tk.Misc.lift(list)
-    sys.stdout.flush()
+        tk.Misc.lift(canvas)
+        tk.Misc.lift(container)
+        tk.Misc.lift(list)
+        sys.stdout.flush()
 
 def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, hourInputAdmin, ctrl_Parcari, ctrl_Programari, totalLots,availableLots,emptyLots, list,container):
     print('klambi_support.selectAdminDate')
@@ -138,17 +157,39 @@ def selectAdminDate(p1, canvas, yearInputAdmin, monthInputAdmin, dayInputAdmin, 
 
 
     if(len(yearInputAdmin.get())!=0 and len(monthInputAdmin.get())!=0 and len(dayInputAdmin.get())!=0):
-        set_labels_TotalAvailableBookedForSpecificDate(totalLots, availableLots, emptyLots, ctrl_Parcari,
+       try:
+           int(yearInputAdmin.get())
+           int(dayInputAdmin.get())
+           int(monthInputAdmin.get())
+           int(hourInputAdmin.get())
+
+       except ValueError:
+           messagebox.showinfo("Error", "Wrong data!")
+       else:
+            set_labels_TotalAvailableBookedForSpecificDate(totalLots, availableLots, emptyLots, ctrl_Parcari,
                                                        yearInputAdmin.get(), monthInputAdmin.get(), dayInputAdmin.get(),
                                                        hourInputAdmin.get())
-        set_list_ReservationListSpecificDate(list,yearInputAdmin.get(),monthInputAdmin.get(),dayInputAdmin.get(),hourInputAdmin.get(),ctrl_Programari,container)
+            set_list_ReservationListSpecificDate(list,yearInputAdmin.get(),monthInputAdmin.get(),dayInputAdmin.get(),hourInputAdmin.get(),ctrl_Programari,container)
+
+            tk.Misc.lift(canvas)
+            tk.Misc.lift(container)
+            tk.Misc.lift(list)
+            sys.stdout.flush()
+
+
+
     else:
-        set_labels_TotalAvailableBookedForToday(totalLots, availableLots, emptyLots, ctrl_Parcari,hourInputAdmin.get())
-        set_list_ReservationListToday(list,hourInputAdmin.get(),ctrl_Programari,container)
-    tk.Misc.lift(canvas)
-    tk.Misc.lift(container)
-    tk.Misc.lift(list)
-    sys.stdout.flush()
+        try:
+            int(hourInputAdmin.get())
+        except ValueError:
+            messagebox.showinfo("Error", "Wrong hour!")
+        else:
+            set_labels_TotalAvailableBookedForToday(totalLots, availableLots, emptyLots, ctrl_Parcari,hourInputAdmin.get())
+            set_list_ReservationListToday(list,hourInputAdmin.get(),ctrl_Programari,container)
+            tk.Misc.lift(canvas)
+            tk.Misc.lift(container)
+            tk.Misc.lift(list)
+            sys.stdout.flush()
 
 
 def checkAvailability(p1, canvas, totalLotsLabel,availableLotsLabel,bookedLotsLabel, ctrl_Parcari, list, container):
@@ -182,16 +223,16 @@ def changePakingStatus(p1, canvas1, canvas2, entryId, entryNewStatus,ctrl_Parcar
     elif(entryNewStatus.get()=="deschis"):
         val=1
     else:
-        messagebox.showinfo("Error","Va rugam introduceti inchis/deschis pentru status!")
+        messagebox.showinfo("Error","Please insert inchis/deschis for status!")
 
 
     if(ctrl_Parcari.findParcare(entryId.get())==False):
-        messagebox.showinfo("Error","Id inexistent!")
+        messagebox.showinfo("Error","The id does not exist!")
     elif(val==1 or val==0):
         ctrl_Parcari.updateStatus(val,entryId.get())
+
         if(val==0):
             ctrl_Programari.deleteProgramariByParcareAndAfterSysdate(entryId.get())
-
     tk.Misc.lift(canvas1)
     tk.Misc.lift(canvas2)
     sys.stdout.flush()
@@ -264,17 +305,20 @@ def set_list_ParcariAvailableLotsOnSpecificDate(list, ctrl_Parcari,year,month,da
     if(len(year)!=0 and len(month)!=0 and len(day)!=0):
         for row in ctrl_Parcari.getParcariAvailableLotsOnSpecificDate(year,month,day,hour):
             list_to_add.append(row)  #retinem fiecare rezultat al functiei in lista initiata goala
+
     else:
+
         for row in ctrl_Parcari.getParcariAvailableLotsToday(hour):
             list_to_add.append(row)
-
-    for item in list_to_add:    #pentru fiecare obiect ce vrem sa il aratam
-        list.insert('', 'end', values=item)     #adaugam in obiectul de tip tree
+    for item in list_to_add:  # pentru fiecare obiect ce vrem sa il aratam
+        list.insert('', 'end', values=item)  # adaugam in obiectul de tip tree
         list.column(list_header[0], width=50)
         list.column(list_header[1], width=155)
         list.column(list_header[2], width=50)
-    tk.Misc.lift(container)     #ridicam container-ul listei sa se vada deasupra
+    tk.Misc.lift(container)  # ridicam container-ul listei sa se vada deasupra
     sys.stdout.flush()
+
+
 
 def set_list_ReservationListSpecificDate(list, year,month,day,hour,ctrl_Programari,container):
     list.delete(*list.get_children())  # golim lista initial, sa nu se intample ce zicea Andra
