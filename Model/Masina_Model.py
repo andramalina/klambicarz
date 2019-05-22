@@ -5,6 +5,7 @@ class Masina_Model(Basic_Model):
         Basic_Model.__init__(self)
 
     def viewAllMasiniForUser(self, user):
+        self.db.commit()
         id = user.get_id_user()
         id=5
        # self.cursor=self.db.cursor(prepared=True)
@@ -14,6 +15,7 @@ class Masina_Model(Basic_Model):
         self.db.commit()
 
     def findMasina(self, nr_inmatriculare):
+        self.db.commit()
         sql_select="select * from masina where nr_inmatriculare=%s"
         val=(nr_inmatriculare,)
         self.cursor.execute(sql_select,val)
